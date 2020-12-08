@@ -1,5 +1,5 @@
 import reportWebVitals from './reportWebVitals';
-import state, { subscribe } from './redax/state'
+import store from './redax/state'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -9,20 +9,21 @@ import { addPost, updateNewPostText, updateNewMessageText, addMessage } from './
 
 
 
-
-let rerenderEntireTree = () => {
+let rerenderEntireTree = (state) => {
 	ReactDOM.render(
 		<React.StrictMode>
 			<BrowserRouter>
-				<App state={state} addPost={addPost} updateNewPostText={updateNewPostText} updateNewMessageText={updateNewMessageText} addMessage={addMessage} />,
+				<App state={state}
+					dispatch={store.dispatch.bind(store)} 
+					 />,
 			</BrowserRouter>
 		</React.StrictMode>,
 		document.getElementById('root')
 	);
 }
-rerenderEntireTree(state);
+rerenderEntireTree(store.getState());
 
-subscribe(rerenderEntireTree);
+store.subscribe(rerenderEntireTree);
 
 
 // If you want to start measuring performance in your app, pass a function
