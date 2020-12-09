@@ -1,11 +1,11 @@
 import reportWebVitals from './reportWebVitals';
-import store from './redax/state'
+import store from './redax/store'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { addPost, updateNewPostText, updateNewMessageText, addMessage } from './redax/state'
+import { addPost, updateNewPostText, updateNewMessageText, addMessage } from './redax/store'
 
 
 

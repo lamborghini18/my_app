@@ -1,12 +1,6 @@
 import dialogsReduser from "./dialogs_reduser ";
 import profileReduser from "./profile_reduser";
-// import navbarReduser from "./navbar_reduser";
-
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+import navbarReduser from "./navbar_reduser";
 
 
 let store = {
@@ -36,7 +30,7 @@ let store = {
 				{ id: 3, message: 'It is OK' },
 				{ id: 4, message: 'Fine!' }
 			],
-			newMessageText: ' '
+			newMessageText: ''
 		},
 		navbar: {
 			friends: [
@@ -61,16 +55,12 @@ let store = {
 	dispatch(action){
 		this._state.profilePage = profileReduser(this._state.profilePage, action);
 		this._state.dialogsPage = dialogsReduser(this._state.dialogsPage, action);
-		// this._state.navbar = navbarReduser(this._state.navbar, action);
+		this._state.navbar = navbarReduser(this._state.navbar, action);
 
 		this._callSubscriber(this._state);
 	}
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST})
-export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text })
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE})
-export const updateNewMessageTextActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newMessage: text })
 
 
 export default store;

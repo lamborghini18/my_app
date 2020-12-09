@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../redax/state';
+import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../redax/dialogs_reduser ';
 import DialogItem from './DialogItem/DialogsItem';
 import s from './Dialogs.module.css'
 import Message from './Message/Message';
@@ -13,8 +13,6 @@ const Dialogs = (props) => {
 	let dialogsElements = state.dialogs.map(dialog => <DialogItem name={dialog.name} ava={dialog.ava} id={dialog.id} />);
 	let messagesElements = state.messages.map(message => <Message message={message.message} id={message.id} />);
 	let newMessageText = state.newMassageText;
-	// let newMessageElement = React.createRef();
-
 
 
 	let addMessage = () => {
