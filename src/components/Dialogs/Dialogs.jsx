@@ -7,24 +7,23 @@ import Message from './Message/Message';
 
 
 const Dialogs = (props) => {
-	
-	let dialogsElements = props.dialogsPage.dialogs.map(dialog => <DialogItem name={dialog.name} ava={dialog.ava} id={dialog.id} />);
-	let messagesElements = props.dialogsPage.messages.map(message => <Message message={message.message} id={message.id} />);
 
-	let newMessageElement = React.createRef();
+	let state = props.store.getState().dialogsPage;
+
+	let dialogsElements = state.dialogs.map(dialog => <DialogItem name={dialog.name} ava={dialog.ava} id={dialog.id} />);
+	let messagesElements = state.messages.map(message => <Message message={message.message} id={message.id} />);
+	let newMessageText = state.newMassageText;
+	// let newMessageElement = React.createRef();
 
 
 
 	let addMessage = () => {
-		// props.addMessage();
-		props.dispatch(addMessageActionCreator())
+		props.store.dispatch(addMessageActionCreator())
 	}
 
-	let onMessageChange = () => {
-		let text = newMessageElement.current.value;
-		// props.updateNewMessageText(text);
-		let action = updateNewMessageTextActionCreator(text);
-		props.dispatch(action)
+	let onMessageChange = (e) => {
+		let text = e.target.value;
+		props.store.dispatch(updateNewMessageTextActionCreator(text));
 	}
 
 	return (
@@ -34,12 +33,14 @@ const Dialogs = (props) => {
 			</div>
 			<div className={s.messagesArea}>
 				<div className={s.messages}>
-					{messagesElements}
+					<div>{messagesElements}</div>
 					<div className ={s.newMessages}>
-						<textarea onChange={onMessageChange} ref={newMessageElement} value={props.newMessageText}/>
+						<textarea placeholder='Enter your message'
+									onChange={onMessageChange}
+									value={newMessageText}/>
 					</div>
 					<div>
-						<button onClick={addMessage}>Add message</button>
+						<button onClick={addMessage}>Send</button>
 					</div>
 				</div>
 			</div>
