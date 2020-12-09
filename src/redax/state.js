@@ -1,6 +1,6 @@
 import dialogsReduser from "./dialogs_reduser ";
 import profileReduser from "./profile_reduser";
-import navbarReduser from "./navbar_reduser";
+// import navbarReduser from "./navbar_reduser";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
@@ -61,7 +61,7 @@ let store = {
 	dispatch(action){
 		this._state.profilePage = profileReduser(this._state.profilePage, action);
 		this._state.dialogsPage = dialogsReduser(this._state.dialogsPage, action);
-		this._state.navbar = navbarReduser(this._state.navbar, action);
+		// this._state.navbar = navbarReduser(this._state.navbar, action);
 
 		this._callSubscriber(this._state);
 	}
