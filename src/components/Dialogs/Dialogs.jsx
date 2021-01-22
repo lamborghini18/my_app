@@ -1,5 +1,4 @@
 import React from 'react';
-import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../redux/dialogs_reduсer ';
 import DialogItem from './DialogItem/DialogsItem';
 import s from './Dialogs.module.css'
 import Message from './Message/Message';
@@ -9,8 +8,8 @@ const Dialogs = (props) => {
 
 	let state = props.dialogsPage;
 
-	let dialogsElements = state.dialogs.map(dialog => <DialogItem name={dialog.name} ava={dialog.ava} id={dialog.id} />);
-	let messagesElements = state.messages.map(message => <Message message={message.message} id={message.id} />);
+	let dialogsElements = state.dialogs.map(dialog => <DialogItem name={dialog.name} key={dialog.id} ava={dialog.ava} id={dialog.id} />);
+	let messagesElements = state.messages.map(message => <Message message={message.message} key={message.id} id={message.id} />);
 	let newMessageText = state.newMassageText;
 
 
