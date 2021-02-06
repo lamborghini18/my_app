@@ -1,3 +1,15 @@
 .userPhoto {
 	width: 100px;
 }
+
+.userId {
+	padding: 10px 10px 10px 20px;
+}
+
+.selectedPage {
+	font-weight: bold;
+}
+
+.preloader {
+	width: 200px;
+}
