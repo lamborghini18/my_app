@@ -6,3 +6,11 @@ background-color:rgba(8, 76, 90, 0.788);
 .header img {
 width: 80px;
 }
+
+.loginBlock {
+float: right;
+margin: 15px 20px 0 0;
+color: #fff;
+	text-decoration: none;
+}
+
