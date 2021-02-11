@@ -11,7 +11,7 @@ let Users = (props) => {
 	for (let i = 1; i <= pagesCount; i++) {
 		pages.push(i);
 	}
- alert("Hi")
+alert('Hi')
 	return <div>
 		<div>
 			{pages.map(p => {
