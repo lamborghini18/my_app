@@ -12,6 +12,7 @@ let reducers = combineReducers({
 	navbar: navbarReduсer,
 	usersPage: usersReduсer,
 	auth: authReduсer,
+	
 });
 
 let store = createStore(reducers);
