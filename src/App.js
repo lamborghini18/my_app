@@ -10,7 +10,7 @@ import DialogsConteiner from './components/Dialogs/DialogsConteiner';
 import UsersConteiner from './components/Users/UsersConteiner';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import LoginPage from './components/Login/login';
+import LoginPage from './components/Login/Login';
 
 
 
