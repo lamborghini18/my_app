@@ -3,6 +3,7 @@ import styles from "./Users.module.css";
 import userPhoto from "../../assets/images/user.png";
 import { NavLink } from "react-router-dom";
 import Pagination from "@material-ui/lab/Pagination";
+import Button from "@material-ui/core/Button";
 
 const Users = ({
   totalUsersCount,
@@ -24,7 +25,10 @@ const Users = ({
     <div>
       <div>
         <Pagination
+          className={styles.paginator}
           count={pagesCount}
+          variant="outlined"
+          color="primary"
           defaultCurrent={1}
           showSizeChanger={false}
           onChange={(event, page) => {
@@ -51,23 +55,29 @@ const Users = ({
             </div>
             <div>
               {u.followed ? (
-                <button
+                <Button
+                  size="small"
+                  variant="contained"
+                  color="primary"
                   disabled={followingInProgress.some((id) => id === u.id)}
                   onClick={() => {
                     unfollow(u.id);
                   }}
                 >
                   unFollow
-                </button>
+                </Button>
               ) : (
-                <button
+                <Button
+                  size="small"
+                  variant="contained"
+                  color="primary"
                   disabled={followingInProgress.some((id) => id === u.id)}
                   onClick={() => {
                     follow(u.id);
                   }}
                 >
                   Follow
-                </button>
+                </Button>
               )}
             </div>
           </span>

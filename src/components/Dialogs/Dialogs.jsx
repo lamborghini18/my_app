@@ -3,6 +3,8 @@ import { Redirect } from "react-router-dom";
 import DialogItem from "./DialogItem/DialogsItem";
 import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 
 const Dialogs = (props) => {
   let state = props.dialogsPage;
@@ -38,14 +40,19 @@ const Dialogs = (props) => {
         <div className={s.messages}>
           <div>{messagesElements}</div>
           <div className={s.newMessages}>
-            <textarea
+            <TextField
+              id="outlined-basic"
+              label="New message"
+              variant="outlined"
               placeholder="Enter your message"
               onChange={onMessageChange}
               value={newMessageText}
             />
           </div>
           <div>
-            <button onClick={addMessage}>Send</button>
+            <Button onClick={addMessage} variant="contained" color="primary">
+              Send
+            </Button>
           </div>
         </div>
       </div>
