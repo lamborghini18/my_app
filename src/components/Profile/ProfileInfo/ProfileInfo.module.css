@@ -1,28 +1,28 @@
 .picture img {
-width: 1000px;
+  width: 1000px;
 }
 
 .descriptionBlock {
-	margin: 10px;
-	display: grid;
-	grid-template-areas: 
-	"ava info";
-	grid-template-columns: 1fr 3fr;
-	grid-gap: 10px;
+  margin: 10px;
+  display: grid;
+  grid-template-areas: "ava info";
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 10px;
 }
 
 .info {
-	padding: 20px;
-	grid-area: info;
-	background-color:rgba(19, 125, 167, 0.171);
-	color:rgba(4, 72, 117, 0.918);
+  padding: 20px;
+  grid-area: info;
+  background-color: rgba(19, 125, 167, 0.171);
+  color: rgba(4, 72, 117, 0.918);
 }
 
 .descriptionBlock img {
-	grid-area: ava;
+  grid-area: ava;
+  width: 300px;
 }
 
 .fullName {
-	font-weight: 700;
-	font-size: 30px;
+  font-weight: 700;
+  font-size: 30px;
 }
