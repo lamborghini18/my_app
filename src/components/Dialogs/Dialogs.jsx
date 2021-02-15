@@ -3,13 +3,13 @@ import { Redirect } from "react-router-dom";
 import DialogItem from "./DialogItem/DialogsItem";
 import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
+import { Button, TextField } from "@material-ui/core";
+import SendIcon from "@material-ui/icons/Send";
 
-const Dialogs = (props) => {
-  let state = props.dialogsPage;
+const Dialogs = ({ dialogsPage, updateNewMessageText, addMessage }) => {
+  const state = dialogsPage;
 
-  let dialogsElements = state.dialogs.map((dialog) => (
+  const dialogsElements = state.dialogs.map((dialog) => (
     <DialogItem
       name={dialog.name}
       key={dialog.id}
@@ -17,21 +17,14 @@ const Dialogs = (props) => {
       id={dialog.id}
     />
   ));
-  let messagesElements = state.messages.map((message) => (
+  const messagesElements = state.messages.map((message) => (
     <Message message={message.message} key={message.id} id={message.id} />
   ));
-  let newMessageText = state.newMassageText;
 
-  let addMessage = () => {
-    props.addMessage();
+  const onMessageChange = (event) => {
+    const text = event.target.value;
+    updateNewMessageText(text);
   };
-
-  let onMessageChange = (event) => {
-    let text = event.target.value;
-    props.updateNewMessageText(text);
-  };
-
-  if (!props.isAuth) return <Redirect to={"/login"} />;
 
   return (
     <div className={s.dialogs}>
@@ -46,11 +39,16 @@ const Dialogs = (props) => {
               variant="outlined"
               placeholder="Enter your message"
               onChange={onMessageChange}
-              value={newMessageText}
+              value={state.newMessageText}
             />
           </div>
           <div>
-            <Button onClick={addMessage} variant="contained" color="primary">
+            <Button
+              onClick={addMessage}
+              endIcon={<SendIcon />}
+              variant="contained"
+              color="primary"
+            >
               Send
             </Button>
           </div>

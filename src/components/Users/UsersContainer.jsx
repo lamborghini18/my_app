@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   follow,
   unfollow,
@@ -12,35 +12,43 @@ import Preloader from "../common/Preloader/Preloader";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 
-class UsersConteiner extends React.Component {
-  componentDidMount() {
-    this.props.getUsers(this.props.currentPage, this.props.pageSize);
-  }
+const UsersContainer = ({
+  getUsers,
+  currentPage,
+  pageSize,
+  isFetching,
+  totalUsersCount,
+  users,
+  unfollow,
+  follow,
+  followingInProgress,
+}) => {
+  useEffect(() => {
+    getUsers(currentPage, pageSize);
+  }, []);
 
-  onPageChanged = (pageNumber) => {
-    this.props.getUsers(pageNumber, this.props.pageSize);
+  const onPageChanged = (pageNumber) => {
+    getUsers(pageNumber, pageSize);
   };
 
-  render() {
-    return (
-      <>
-        {this.props.isFetching ? <Preloader /> : null}
-        <Users
-          totalUsersCount={this.props.totalUsersCount}
-          pageSize={this.props.pageSize}
-          currentPage={this.props.currentPage}
-          onPageChanged={this.onPageChanged}
-          users={this.props.users}
-          unfollow={this.props.unfollow}
-          follow={this.props.follow}
-          followingInProgress={this.props.followingInProgress}
-        />
-      </>
-    );
-  }
-}
+  return (
+    <>
+      {isFetching ? <Preloader /> : null}
+      <Users
+        totalUsersCount={totalUsersCount}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        onPageChanged={onPageChanged}
+        users={users}
+        unfollow={unfollow}
+        follow={follow}
+        followingInProgress={followingInProgress}
+      />
+    </>
+  );
+};
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
   return {
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
@@ -61,4 +69,4 @@ export default compose(
     getUsers,
   }),
   withAuthRedirect
-)(UsersConteiner);
+)(UsersContainer);

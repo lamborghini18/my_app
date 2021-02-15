@@ -37,6 +37,7 @@ let stateCopy;
 		}
 
 		case UPDATE_NEW_MESSAGE_TEXT:
+			debugger;
 			stateCopy = {
 				...state,
 				newMessageText: action.newMessage,
@@ -50,8 +51,9 @@ let stateCopy;
 }
 
 export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })
-export const updateNewMessageTextActionCreator = (text) =>
-	({ type: UPDATE_NEW_MESSAGE_TEXT, newMessage: text })
+export const updateNewMessageTextActionCreator = (text) => {
+	
+return ({ type: UPDATE_NEW_MESSAGE_TEXT, newMessage: text })}
 
 
 export default dialogsReduсer;

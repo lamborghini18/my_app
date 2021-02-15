@@ -1,23 +1,18 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
+import { Button, TextField } from "@material-ui/core";
 
-const MyPosts = (props) => {
-  let postElements = props.posts.map((p) => (
-    <Post message={p.message} key={p.id} id={p.id} likesCount={p.likesCount} />
-  ));
-
-  let newPostElement = React.createRef();
-
-  let onAddPost = () => {
-    props.addPost();
-  };
-
-  let onPostChange = () => {
-    let text = newPostElement.current.value;
-    props.updateNewPostText(text);
+const MyPosts = ({ posts, addPost, updateNewPostText, newPostText }) => {
+  const getPostElements = () => {
+    return posts.map((post) => (
+      <Post
+        message={post.message}
+        key={post.id}
+        id={post.id}
+        likesCount={post.likesCount}
+      />
+    ));
   };
 
   return (
@@ -31,24 +26,19 @@ const MyPosts = (props) => {
             label="New post"
             variant="outlined"
             placeholder="Enter your post"
-            onChange={onPostChange}
-            inputRef={newPostElement}
-            value={props.newPostText}
+            onChange={(event) => {
+              updateNewPostText(event.target.value);
+            }}
+            value={newPostText}
           />
         </div>
         <div className={s.addPost}>
-          <Button variant="contained" color="primary" onClick={onAddPost}>
+          <Button variant="contained" color="primary" onClick={addPost}>
             Add post
           </Button>
         </div>
-
-        <div>
-          <Button variant="contained" color="primary">
-            Remove
-          </Button>
-        </div>
       </div>
-      <div className={s.posts}>{postElements}</div>
+      <div className={s.posts}>{getPostElements()}</div>
     </div>
   );
 };
