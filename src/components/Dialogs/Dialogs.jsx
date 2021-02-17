@@ -1,10 +1,9 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import DialogItem from "./DialogItem/DialogsItem";
-import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
 import { Button, TextField } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
+import styled from "styled-components";
 
 const Dialogs = ({ dialogsPage, updateNewMessageText, addMessage }) => {
   const state = dialogsPage;
@@ -13,7 +12,7 @@ const Dialogs = ({ dialogsPage, updateNewMessageText, addMessage }) => {
     <DialogItem
       name={dialog.name}
       key={dialog.id}
-      ava={dialog.ava}
+      avatarURL={dialog.avatarURL}
       id={dialog.id}
     />
   ));
@@ -27,12 +26,12 @@ const Dialogs = ({ dialogsPage, updateNewMessageText, addMessage }) => {
   };
 
   return (
-    <div className={s.dialogs}>
-      <div className={s.dialogsItem}>{dialogsElements}</div>
-      <div className={s.messagesArea}>
-        <div className={s.messages}>
+    <DialogsBlock>
+      <ItemBlock>{dialogsElements}</ItemBlock>
+      <AreaBlock>
+        <MessagesBlock>
           <div>{messagesElements}</div>
-          <div className={s.newMessages}>
+          <StyledNewMessage>
             <TextField
               id="outlined-basic"
               label="New message"
@@ -41,7 +40,7 @@ const Dialogs = ({ dialogsPage, updateNewMessageText, addMessage }) => {
               onChange={onMessageChange}
               value={state.newMessageText}
             />
-          </div>
+          </StyledNewMessage>
           <div>
             <Button
               onClick={addMessage}
@@ -52,10 +51,29 @@ const Dialogs = ({ dialogsPage, updateNewMessageText, addMessage }) => {
               Send
             </Button>
           </div>
-        </div>
-      </div>
-    </div>
+        </MessagesBlock>
+      </AreaBlock>
+    </DialogsBlock>
   );
 };
 
 export default Dialogs;
+
+const DialogsBlock = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+`;
+const ItemBlock = styled.div`
+  padding: 10px;
+`;
+const AreaBlock = styled.div`
+  margin: 10px;
+  height: 500px;
+  background-color: rgba(61, 206, 250, 0.411);
+`;
+const MessagesBlock = styled.div`
+  padding: 10px;
+`;
+const StyledNewMessage = styled.div`
+  padding: 50px 0 10px 0;
+`;

@@ -1,59 +1,71 @@
 import React from "react";
 import Preloader from "../../common/Preloader/Preloader";
-import s from "./ProfileInfo.module.css";
 import userPhoto from "../../../assets/images/user.png";
 import ProfileStatus from "./ProfileStatus";
+import styled from "styled-components";
+import TextStyle from "../../../assets/fonts/TextStyle";
+import BigTextStyle from "../../../assets/fonts/BigTextStyle";
 
-const ProfileInfo = (props) => {
-  if (!props.profile) {
+const ProfileInfo = ({ profile }) => {
+  if (!profile) {
     return <Preloader />;
   }
 
   return (
-    <div className={s.profileBlock}>
-      {/* <div className={s.picture}>
-        <img src="https://img4.goodfon.ru/original/2560x1024/d/43/tsvety-vesna-tsvetenie-vetki-fon.jpg" />
-      </div> */}
-
-      <div className={s.descriptionBlock}>
-        <div>
-          <img
-            src={
-              props.profile.photos.large != null
-                ? props.profile.photos.large
-                : userPhoto
-            }
-          />
-        </div>
-        <div className={s.info}>
-          <div className={s.fullName}>{props.profile.fullName}</div>
-          <div>{props.profile.lookingForAJobDescription}</div>
-          <span>Контактная информация:</span>
-          <div>{props.profile.contacts.github}</div>
-          <div>{props.profile.contacts.vk}</div>
-          <div>{props.profile.contacts.facebook}</div>
-          <div>{props.profile.contacts.instagram}</div>
-          <div>{props.profile.contacts.twitter}</div>
-          <div>{props.profile.contacts.website}</div>
-          <div>{props.profile.contacts.youtube}</div>
-          <div>{props.profile.contacts.mainLink}</div>
-
-          <div>
-            {" "}
+    <>
+      <DescriptionBlock>
+        <StyledAvatar
+          src={profile.photos.large != null ? profile.photos.large : userPhoto}
+        />
+        <StyledInfoBlock>
+          <BigTextStyle>{profile.fullName}</BigTextStyle>
+          <TextStyle>{profile.lookingForAJobDescription}</TextStyle>
+          <TextStyle>{profile.contacts.github}</TextStyle>
+          <TextStyle>{profile.contacts.vk}</TextStyle>
+          <TextStyle>{profile.contacts.facebook}</TextStyle>
+          <TextStyle>{profile.contacts.instagram}</TextStyle>
+          <TextStyle>{profile.contacts.twitter}</TextStyle>
+          <TextStyle>{profile.contacts.website}</TextStyle>
+          <TextStyle>{profile.contacts.youtube}</TextStyle>
+          <TextStyle>{profile.contacts.mainLink}</TextStyle>
+          <TextStyle>
             Поиск работы:
-            {props.profile ? (
-              <p key={props.profile.lookingForAJob == true}>Yes </p>
+            {profile ? (
+              <span key={profile.lookingForAJob == true}>Yes </span>
             ) : (
-              <p key={props.profile.lookingForAJob == false}>No </p>
+              <span key={profile.lookingForAJob == false}>No </span>
             )}
-          </div>
-        </div>
-      </div>
+          </TextStyle>
+        </StyledInfoBlock>
+      </DescriptionBlock>
       <div>
-        <ProfileStatus status={"hello"} />
+        <ProfileStatus status={"hi"} />
       </div>
-    </div>
+    </>
   );
 };
 
 export default ProfileInfo;
+
+const FullName = styled.div`
+  font-weight: 700;
+  font-size: 30px;
+  color: rgba(6, 9, 141, 0.856);
+`;
+const DescriptionBlock = styled.div`
+  margin: 10px;
+  display: grid;
+  grid-template-areas: "ava info";
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 10px;
+`;
+const StyledAvatar = styled.img`
+  grid-area: ava;
+  width: 300px;
+`;
+const StyledInfoBlock = styled.div`
+  padding: 20px;
+  grid-area: info;
+  background-color: rgba(19, 125, 167, 0.171);
+  color: rgba(4, 72, 117, 0.918);
+`;

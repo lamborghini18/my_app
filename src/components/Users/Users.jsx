@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./Users.module.css";
 import userPhoto from "../../assets/images/user.png";
 import { NavLink } from "react-router-dom";
 import Pagination from "@material-ui/lab/Pagination";
 import Button from "@material-ui/core/Button";
+import styled from "styled-components";
 
 const Users = ({
   totalUsersCount,
@@ -23,9 +23,8 @@ const Users = ({
 
   return (
     <div>
-      <div>
+      <StyledPaginator>
         <Pagination
-          className={styles.paginator}
           count={pagesCount}
           variant="outlined"
           color="primary"
@@ -36,20 +35,14 @@ const Users = ({
           }}
           page={currentPage}
         />
-      </div>
-      <div>
-        {/* {pages.map(p => {
-				return <button className={currentPage === p && styles.selectedPage} onClick={(e) => { onPageChanged(p) }}>{p}</button>
-			})} */}
-      </div>
+      </StyledPaginator>
       {users.map((u) => (
-        <div key={u.id} className={styles.userId}>
+        <StyledUserItems key={u.id}>
           <span>
             <div>
               <NavLink to={"/profile/" + u.id}>
-                <img
+                <StyledAvatar
                   src={u.photos.small != null ? u.photos.small : userPhoto}
-                  className={styles.userPhoto}
                 />
               </NavLink>
             </div>
@@ -85,14 +78,23 @@ const Users = ({
             <div>{u.name}</div>
             <div>{u.status}</div>
           </span>
-          <span>
-            <div>{"u.location.country"}</div>
-            <div>{"u.location.city"}</div>
-          </span>
-        </div>
+        </StyledUserItems>
       ))}
     </div>
   );
 };
 
 export default Users;
+
+const StyledPaginator = styled.div`
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledUserItems = styled.div`
+  padding: 10px 10px 10px 20px;
+`;
+const StyledAvatar = styled.img`
+  width: 100px;
+`;

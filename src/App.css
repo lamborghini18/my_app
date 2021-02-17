@@ -1,4 +1,4 @@
-.app-wrapper {
+/* .app-wrapper {
 margin: 0 auto;
 display: grid;
 width: 1200px;
@@ -8,10 +8,9 @@ grid-template-areas:
 grid-template-rows: 60px 1fr;
 grid-template-columns: 2fr 10fr;
 grid-gap: 10px;
-}
+} */
 
-.app-wrapper-content {
-grid-area: cont;
-background-color:  rgba(118, 50, 151, 0.133);
-}
-
+/* .app-wrapper-content {
+  grid-area: cont;
+  background-color: rgba(16, 184, 52, 0.133);
+} */

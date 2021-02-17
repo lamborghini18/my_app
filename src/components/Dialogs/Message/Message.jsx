@@ -1,8 +1,8 @@
-import React from 'react';
-import s from './../Dialogs.module.css'
+import React from "react";
+import TextStyle from "../../../assets/fonts/TextStyle";
 
-const Message = (props) => {
-	return <div className={s.message}>{props.message}</div>
-}
+const Message = ({ message }) => {
+  return <TextStyle>{message}</TextStyle>;
+};
 
 export default Message;

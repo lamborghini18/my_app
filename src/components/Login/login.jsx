@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
+import BigTextStyle from "../../assets/fonts/BigTextStyle";
 
 const Login = (props) => {
-	return <h1>Login</h1>
-	
-}
+  return <BigTextStyle>Login</BigTextStyle>;
+};
 
 export default Login;
