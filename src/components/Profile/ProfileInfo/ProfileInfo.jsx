@@ -2,6 +2,7 @@ import React from "react";
 import Preloader from "../../common/Preloader/Preloader";
 import s from "./ProfileInfo.module.css";
 import userPhoto from "../../../assets/images/user.png";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -10,9 +11,9 @@ const ProfileInfo = (props) => {
 
   return (
     <div className={s.profileBlock}>
-      <div className={s.picture}>
+      {/* <div className={s.picture}>
         <img src="https://img4.goodfon.ru/original/2560x1024/d/43/tsvety-vesna-tsvetenie-vetki-fon.jpg" />
-      </div>
+      </div> */}
 
       <div className={s.descriptionBlock}>
         <div>
@@ -47,6 +48,9 @@ const ProfileInfo = (props) => {
             )}
           </div>
         </div>
+      </div>
+      <div>
+        <ProfileStatus status={"hello"} />
       </div>
     </div>
   );
