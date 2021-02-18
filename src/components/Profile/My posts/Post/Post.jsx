@@ -1,13 +1,14 @@
 import React from "react";
 import userIcon from "../../../../assets/images/doctor.png";
 import styled from "styled-components";
-import TextStyle from "../../../../assets/fonts/TextStyle";
+import { textColorBlue } from "../../../../assets/colors/colors";
+import { text_24 } from "../../../../assets/fonts/fonts";
 
 const Post = ({ message }) => {
   return (
     <StyledItem>
       <StyledAvatar src={userIcon} />
-      <TextStyle> {message}</TextStyle>
+      <StyledText> {message}</StyledText>
     </StyledItem>
   );
 };
@@ -24,4 +25,9 @@ const StyledAvatar = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 30px;
+`;
+
+const StyledText = styled.div`
+  color: ${textColorBlue};
+  ${text_24};
 `;

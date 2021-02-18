@@ -3,8 +3,8 @@ import Preloader from "../../common/Preloader/Preloader";
 import userPhoto from "../../../assets/images/user.png";
 import ProfileStatus from "./ProfileStatus";
 import styled from "styled-components";
-import TextStyle from "../../../assets/fonts/TextStyle";
-import BigTextStyle from "../../../assets/fonts/BigTextStyle";
+import { textColorBlue } from "../../../assets/colors/colors";
+import { text_24, heading_30 } from "../../../assets/fonts/fonts";
 
 const ProfileInfo = ({ profile }) => {
   if (!profile) {
@@ -18,24 +18,24 @@ const ProfileInfo = ({ profile }) => {
           src={profile.photos.large != null ? profile.photos.large : userPhoto}
         />
         <StyledInfoBlock>
-          <BigTextStyle>{profile.fullName}</BigTextStyle>
-          <TextStyle>{profile.lookingForAJobDescription}</TextStyle>
-          <TextStyle>{profile.contacts.github}</TextStyle>
-          <TextStyle>{profile.contacts.vk}</TextStyle>
-          <TextStyle>{profile.contacts.facebook}</TextStyle>
-          <TextStyle>{profile.contacts.instagram}</TextStyle>
-          <TextStyle>{profile.contacts.twitter}</TextStyle>
-          <TextStyle>{profile.contacts.website}</TextStyle>
-          <TextStyle>{profile.contacts.youtube}</TextStyle>
-          <TextStyle>{profile.contacts.mainLink}</TextStyle>
-          <TextStyle>
+          <StyledFullName>{profile.fullName}</StyledFullName>
+          <StyledInfo>{profile.lookingForAJobDescription}</StyledInfo>
+          <StyledInfo>{profile.contacts.github}</StyledInfo>
+          <StyledInfo>{profile.contacts.vk}</StyledInfo>
+          <StyledInfo>{profile.contacts.facebook}</StyledInfo>
+          <StyledInfo>{profile.contacts.instagram}</StyledInfo>
+          <StyledInfo>{profile.contacts.twitter}</StyledInfo>
+          <StyledInfo>{profile.contacts.website}</StyledInfo>
+          <StyledInfo>{profile.contacts.youtube}</StyledInfo>
+          <StyledInfo>{profile.contacts.mainLink}</StyledInfo>
+          <StyledInfo>
             Поиск работы:
             {profile ? (
               <span key={profile.lookingForAJob == true}>Yes </span>
             ) : (
               <span key={profile.lookingForAJob == false}>No </span>
             )}
-          </TextStyle>
+          </StyledInfo>
         </StyledInfoBlock>
       </DescriptionBlock>
       <div>
@@ -47,11 +47,6 @@ const ProfileInfo = ({ profile }) => {
 
 export default ProfileInfo;
 
-const FullName = styled.div`
-  font-weight: 700;
-  font-size: 30px;
-  color: rgba(6, 9, 141, 0.856);
-`;
 const DescriptionBlock = styled.div`
   margin: 10px;
   display: grid;
@@ -68,4 +63,12 @@ const StyledInfoBlock = styled.div`
   grid-area: info;
   background-color: rgba(19, 125, 167, 0.171);
   color: rgba(4, 72, 117, 0.918);
+`;
+const StyledInfo = styled.div`
+  color: ${textColorBlue};
+  ${text_24};
+`;
+const StyledFullName = styled.div`
+  color: ${textColorBlue};
+  ${heading_30};
 `;

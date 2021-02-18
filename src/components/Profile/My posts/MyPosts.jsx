@@ -1,10 +1,9 @@
 import React from "react";
-import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import { Button, TextField } from "@material-ui/core";
 import styled from "styled-components";
-import TextStyle from "../../../assets/fonts/TextStyle";
-import BigTextStyle from "../../../assets/fonts/BigTextStyle";
+import { textColorBlue } from "../../../assets/colors/colors";
+import { text_24, heading_30 } from "../../../assets/fonts/fonts";
 
 const MyPosts = ({ posts, addPost, updateNewPostText, newPostText }) => {
   const getPostElements = () => {
@@ -20,7 +19,7 @@ const MyPosts = ({ posts, addPost, updateNewPostText, newPostText }) => {
 
   return (
     <PostsBlock>
-      <BigTextStyle> My post</BigTextStyle>
+      <StyledHeader> My post</StyledHeader>
       <TextFieldBlock>
         <TextField
           id="outlined-basic"
@@ -38,7 +37,7 @@ const MyPosts = ({ posts, addPost, updateNewPostText, newPostText }) => {
           Add post
         </Button>
       </AddPostBlock>
-      <TextStyle>{getPostElements()}</TextStyle>
+      <StyledText>{getPostElements()}</StyledText>
     </PostsBlock>
   );
 };
@@ -54,4 +53,12 @@ const AddPostBlock = styled.div`
 `;
 const TextFieldBlock = styled.div`
   margin: 10px 0;
+`;
+const StyledText = styled.div`
+  color: ${textColorBlue};
+  ${text_24};
+`;
+const StyledHeader = styled.div`
+  color: ${textColorBlue};
+  ${heading_30};
 `;
