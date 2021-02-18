@@ -5,7 +5,7 @@ import {
   setCurrentPage,
   toggleFollowingInProgress,
   getUsers,
-} from "../../redux/users_reduсer ";
+} from "../../redux/users_reducer";
 import { connect } from "react-redux";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";

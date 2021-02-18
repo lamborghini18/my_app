@@ -46,7 +46,6 @@ export default MyPosts;
 
 const PostsBlock = styled.div`
   padding: 10px;
-  color: rgba(4, 72, 117, 0.822);
 `;
 const AddPostBlock = styled.div`
   margin: 10px 0;

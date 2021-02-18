@@ -36,25 +36,28 @@ const Users = ({
           page={currentPage}
         />
       </StyledPaginator>
-      {users.map((u) => (
-        <StyledUserItems key={u.id}>
+      {users.map((user) => (
+        <StyledUserItems key={user.id}>
           <span>
             <div>
-              <NavLink to={"/profile/" + u.id}>
+              <NavLink to={`/profile/${user.id}`}>
                 <StyledAvatar
-                  src={u.photos.small != null ? u.photos.small : userPhoto}
+                  src={
+                    user?.photos?.small || userPhoto
+                    //   user.photos.small != null ? user.photos.small : userPhoto
+                  }
                 />
               </NavLink>
             </div>
             <div>
-              {u.followed ? (
+              {user.followed ? (
                 <Button
                   size="small"
                   variant="contained"
                   color="primary"
-                  disabled={followingInProgress.some((id) => id === u.id)}
+                  disabled={followingInProgress.some((id) => id === user.id)}
                   onClick={() => {
-                    unfollow(u.id);
+                    unfollow(user.id);
                   }}
                 >
                   unFollow
@@ -64,9 +67,9 @@ const Users = ({
                   size="small"
                   variant="contained"
                   color="primary"
-                  disabled={followingInProgress.some((id) => id === u.id)}
+                  disabled={followingInProgress.some((id) => id === user.id)}
                   onClick={() => {
-                    follow(u.id);
+                    follow(user.id);
                   }}
                 >
                   Follow
@@ -75,8 +78,8 @@ const Users = ({
             </div>
           </span>
           <span>
-            <div>{u.name}</div>
-            <div>{u.status}</div>
+            <div>{user.name}</div>
+            <div>{user.status}</div>
           </span>
         </StyledUserItems>
       ))}

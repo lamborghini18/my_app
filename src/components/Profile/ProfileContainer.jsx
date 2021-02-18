@@ -6,7 +6,6 @@ import { withRouter } from "react-router-dom";
 import { compose } from "redux";
 
 const ProfileContainer = ({ getUserProfile, profile, match }) => {
-  debugger;
   useEffect(() => {
     let userId = match.params.userId;
     if (!userId) {

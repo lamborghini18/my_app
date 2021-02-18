@@ -3,7 +3,7 @@ import Preloader from "../../common/Preloader/Preloader";
 import userPhoto from "../../../assets/images/user.png";
 import ProfileStatus from "./ProfileStatus";
 import styled from "styled-components";
-import { textColorBlue } from "../../../assets/colors/colors";
+import { textColorBlue, InfoBlockColor } from "../../../assets/colors/colors";
 import { text_24, heading_30 } from "../../../assets/fonts/fonts";
 
 const ProfileInfo = ({ profile }) => {
@@ -11,30 +11,31 @@ const ProfileInfo = ({ profile }) => {
     return <Preloader />;
   }
 
+  const getUserInfo = (profile) => {
+    const contactsKeys = Object.keys(profile.contacts);
+    const result = contactsKeys.map((key) => {
+      return (
+        <StyledInfo>
+          <StyledSocial>{`${key}: `}</StyledSocial>
+          <div>{`${profile.contacts[key]}`}</div>
+        </StyledInfo>
+      );
+    });
+    return result;
+  };
+
   return (
     <>
       <DescriptionBlock>
-        <StyledAvatar
-          src={profile.photos.large != null ? profile.photos.large : userPhoto}
-        />
+        <StyledAvatar src={profile?.photos?.large || userPhoto} />
         <StyledInfoBlock>
           <StyledFullName>{profile.fullName}</StyledFullName>
+
           <StyledInfo>{profile.lookingForAJobDescription}</StyledInfo>
-          <StyledInfo>{profile.contacts.github}</StyledInfo>
-          <StyledInfo>{profile.contacts.vk}</StyledInfo>
-          <StyledInfo>{profile.contacts.facebook}</StyledInfo>
-          <StyledInfo>{profile.contacts.instagram}</StyledInfo>
-          <StyledInfo>{profile.contacts.twitter}</StyledInfo>
-          <StyledInfo>{profile.contacts.website}</StyledInfo>
-          <StyledInfo>{profile.contacts.youtube}</StyledInfo>
-          <StyledInfo>{profile.contacts.mainLink}</StyledInfo>
+          {getUserInfo(profile)}
           <StyledInfo>
             Поиск работы:
-            {profile ? (
-              <span key={profile.lookingForAJob == true}>Yes </span>
-            ) : (
-              <span key={profile.lookingForAJob == false}>No </span>
-            )}
+            {profile.lookingForAJob ? "Yes" : "No"}
           </StyledInfo>
         </StyledInfoBlock>
       </DescriptionBlock>
@@ -61,14 +62,19 @@ const StyledAvatar = styled.img`
 const StyledInfoBlock = styled.div`
   padding: 20px;
   grid-area: info;
-  background-color: rgba(19, 125, 167, 0.171);
-  color: rgba(4, 72, 117, 0.918);
+  background-color: ${InfoBlockColor};
+  color: ${textColorBlue};
 `;
 const StyledInfo = styled.div`
   color: ${textColorBlue};
   ${text_24};
+  display: flex;
+  flex-direction: row;
 `;
 const StyledFullName = styled.div`
   color: ${textColorBlue};
   ${heading_30};
+`;
+const StyledSocial = styled.div`
+  width: 200px;
 `;

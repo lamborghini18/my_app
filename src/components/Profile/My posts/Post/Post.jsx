@@ -18,7 +18,7 @@ export default Post;
 const StyledItem = styled.div`
   display: grid;
   grid-template-columns: 1fr 10fr;
-  color: rgba(4, 72, 117, 0.822);
+  color: ${textColorBlue};
   padding: 10px;
 `;
 const StyledAvatar = styled.img`

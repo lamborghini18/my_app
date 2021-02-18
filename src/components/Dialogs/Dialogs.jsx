@@ -4,6 +4,7 @@ import Message from "./Message/Message";
 import { Button, TextField } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import styled from "styled-components";
+import { textColorLightBlue } from "../../assets/colors/colors";
 
 const Dialogs = ({ dialogsPage, updateNewMessageText, addMessage }) => {
   const state = dialogsPage;
@@ -69,7 +70,7 @@ const ItemBlock = styled.div`
 const AreaBlock = styled.div`
   margin: 10px;
   height: 500px;
-  background-color: rgba(61, 206, 250, 0.411);
+  background-color: ${textColorLightBlue};
 `;
 const MessagesBlock = styled.div`
   padding: 10px;

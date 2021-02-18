@@ -2,6 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import ListItem from "@material-ui/core/ListItem";
+import {
+  NavbarColorLightBlue,
+  NavLinkColorWhite,
+  textColorBlue,
+} from "../../assets/colors/colors";
 
 const Navbar = (props) => {
   return (
@@ -32,15 +37,15 @@ export default Navbar;
 
 const NavbarBlock = styled.div`
   grid-area: nav;
-  background-color: rgba(19, 125, 167, 0.363);
+  background-color: ${NavbarColorLightBlue};
   padding: 20px;
 `;
 
 const StyledNavlink = styled(NavLink).attrs(() => ({}))`
-  color: #fff;
+  color: ${NavLinkColorWhite};
   text-decoration: none;
   font-weight: 700;
   &:focus {
-    color: rgba(6, 9, 141, 0.856);
+    color: ${textColorBlue};
   }
 `;
