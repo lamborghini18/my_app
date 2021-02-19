@@ -1,13 +1,17 @@
 import React from "react";
 import preloader from "../../../assets/images/loader.gif";
-import styles from "../../Users/Users.module.css";
+import styled from "styled-components";
 
 const Preloader = (props) => {
   return (
     <div>
-      <img src={preloader} className={styles.preloader} />
+      <StylePreloader src={preloader} />
     </div>
   );
 };
 
 export default Preloader;
+
+const StylePreloader = styled.img`
+  width: 200px;
+`;

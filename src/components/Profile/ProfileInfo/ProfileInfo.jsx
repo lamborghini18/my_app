@@ -1,55 +1,80 @@
 import React from "react";
 import Preloader from "../../common/Preloader/Preloader";
-import s from "./ProfileInfo.module.css";
 import userPhoto from "../../../assets/images/user.png";
+import ProfileStatus from "./ProfileStatus";
+import styled from "styled-components";
+import { textColorBlue, InfoBlockColor } from "../../../assets/colors/colors";
+import { text_24, heading_30 } from "../../../assets/fonts/fonts";
 
-const ProfileInfo = (props) => {
-  if (!props.profile) {
+const ProfileInfo = ({ profile }) => {
+  if (!profile) {
     return <Preloader />;
   }
 
+  const getUserInfo = (profile) => {
+    const contactsKeys = Object.keys(profile.contacts);
+    const result = contactsKeys.map((key) => {
+      return (
+        <StyledInfo>
+          <StyledSocial>{`${key}: `}</StyledSocial>
+          <div>{`${profile.contacts[key]}`}</div>
+        </StyledInfo>
+      );
+    });
+    return result;
+  };
+
   return (
-    <div className={s.profileBlock}>
-      <div className={s.picture}>
-        <img src="https://img4.goodfon.ru/original/2560x1024/d/43/tsvety-vesna-tsvetenie-vetki-fon.jpg" />
-      </div>
+    <>
+      <DescriptionBlock>
+        <StyledAvatar src={profile?.photos?.large || userPhoto} />
+        <StyledInfoBlock>
+          <StyledFullName>{profile.fullName}</StyledFullName>
 
-      <div className={s.descriptionBlock}>
-        <div>
-          <img
-            src={
-              props.profile.photos.large != null
-                ? props.profile.photos.large
-                : userPhoto
-            }
-          />
-        </div>
-        <div className={s.info}>
-          <div className={s.fullName}>{props.profile.fullName}</div>
-          <div>{props.profile.lookingForAJobDescription}</div>
-          <span>Контактная информация:</span>
-          <div>{props.profile.contacts.github}</div>
-          <div>{props.profile.contacts.vk}</div>
-          <div>{props.profile.contacts.facebook}</div>
-          <div>{props.profile.contacts.instagram}</div>
-          <div>{props.profile.contacts.twitter}</div>
-          <div>{props.profile.contacts.website}</div>
-          <div>{props.profile.contacts.youtube}</div>
-          <div>{props.profile.contacts.mainLink}</div>
-
-          <div>
-            {" "}
+          <StyledInfo>{profile.lookingForAJobDescription}</StyledInfo>
+          {getUserInfo(profile)}
+          <StyledInfo>
             Поиск работы:
-            {props.profile ? (
-              <p key={props.profile.lookingForAJob == true}>Yes </p>
-            ) : (
-              <p key={props.profile.lookingForAJob == false}>No </p>
-            )}
-          </div>
-        </div>
+            {profile.lookingForAJob ? "Yes" : "No"}
+          </StyledInfo>
+        </StyledInfoBlock>
+      </DescriptionBlock>
+      <div>
+        <ProfileStatus status={"hi"} />
       </div>
-    </div>
+    </>
   );
 };
 
 export default ProfileInfo;
+
+const DescriptionBlock = styled.div`
+  margin: 10px;
+  display: grid;
+  grid-template-areas: "ava info";
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 10px;
+`;
+const StyledAvatar = styled.img`
+  grid-area: ava;
+  width: 300px;
+`;
+const StyledInfoBlock = styled.div`
+  padding: 20px;
+  grid-area: info;
+  background-color: ${InfoBlockColor};
+  color: ${textColorBlue};
+`;
+const StyledInfo = styled.div`
+  color: ${textColorBlue};
+  ${text_24};
+  display: flex;
+  flex-direction: row;
+`;
+const StyledFullName = styled.div`
+  color: ${textColorBlue};
+  ${heading_30};
+`;
+const StyledSocial = styled.div`
+  width: 200px;
+`;

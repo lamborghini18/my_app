@@ -1,48 +1,51 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Friends from "./Friends/Friends";
-import s from "./Navbar.module.css";
+import styled from "styled-components";
+import ListItem from "@material-ui/core/ListItem";
+import {
+  NavbarColorLightBlue,
+  NavLinkColorWhite,
+  textColorBlue,
+} from "../../assets/colors/colors";
 
 const Navbar = (props) => {
   return (
-    <nav className={s.nav}>
-      <div className={s.item}>
-        <NavLink to="/profile" activeClassName={s.activeLink}>
-          Profile
-        </NavLink>
-      </div>
-      <div className={s.item}>
-        <NavLink to="/dialogs" activeClassName={s.activeLink}>
-          Messages
-        </NavLink>
-      </div>
-      <div className={s.item}>
-        <NavLink to="/users" activeClassName={s.activeLink}>
-          Users
-        </NavLink>
-      </div>
-      <div className={`${s.item} ${s.active}`}>
-        <NavLink to="/news" activeClassName={s.activeLink}>
-          News
-        </NavLink>
-      </div>
-      <div className={s.item}>
-        <NavLink to="/music" activeClassName={s.activeLink}>
-          Music
-        </NavLink>
-      </div>
-      <div className={s.item}>
-        <NavLink to="settings" activeClassName={s.activeLink}>
-          Settings
-        </NavLink>
-      </div>
-      <div className={s.item}>
-        <NavLink to="friends" activeClassName={s.activeLink}>
-          {/* <Friends friends={props.navbar.friends}/> */}
-        </NavLink>
-      </div>
-    </nav>
+    <NavbarBlock>
+      <ListItem button>
+        <StyledNavlink to="/profile">Profile</StyledNavlink>
+      </ListItem>
+      <ListItem button>
+        <StyledNavlink to="/dialogs">Messages</StyledNavlink>
+      </ListItem>
+      <ListItem button>
+        <StyledNavlink to="/users">Users</StyledNavlink>
+      </ListItem>
+      <ListItem button>
+        <StyledNavlink to="/news">News</StyledNavlink>
+      </ListItem>
+      <ListItem button>
+        <StyledNavlink to="/music">Music</StyledNavlink>
+      </ListItem>
+      <ListItem button>
+        <StyledNavlink to="settings">Settings</StyledNavlink>
+      </ListItem>
+    </NavbarBlock>
   );
 };
 
 export default Navbar;
+
+const NavbarBlock = styled.div`
+  grid-area: nav;
+  background-color: ${NavbarColorLightBlue};
+  padding: 20px;
+`;
+
+const StyledNavlink = styled(NavLink).attrs(() => ({}))`
+  color: ${NavLinkColorWhite};
+  text-decoration: none;
+  font-weight: 700;
+  &:focus {
+    color: ${textColorBlue};
+  }
+`;
