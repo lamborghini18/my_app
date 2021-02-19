@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const ProfileStatus = ({ status, updateStatus }) => {
   const [editMode, setEditMode] = useState(false);
+  const [newStatus, setNewStatus] = useState(status);
 
   const activateEditMode = () => {
     setEditMode(true);
   };
   const deactivateEditMode = () => {
     setEditMode(false);
-    updateStatus(status);
+    updateStatus(newStatus);
   };
+
+  useEffect(() => {
+    setNewStatus(newStatus);
+  }, [newStatus]);
 
   return (
     <div>
@@ -24,9 +29,9 @@ const ProfileStatus = ({ status, updateStatus }) => {
             autoFocus={true}
             onBlur={deactivateEditMode}
             onChange={(event) => {
-              updateStatus(event.target.value);
+              setNewStatus(event.target.value);
             }}
-            value={status}
+            value={newStatus}
           />
         </div>
       )}
