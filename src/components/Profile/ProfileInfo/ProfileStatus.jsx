@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import s from "./ProfileInfo.module.css";
 
-const ProfileStatus = ({ status }) => {
+const ProfileStatus = ({ status, updateStatus }) => {
   const [editMode, setEditMode] = useState(false);
 
   const activateEditMode = () => {
@@ -9,20 +8,24 @@ const ProfileStatus = ({ status }) => {
   };
   const deactivateEditMode = () => {
     setEditMode(false);
+    updateStatus(status);
   };
 
   return (
     <div>
       {!editMode && (
         <div>
-          <span onDoubleClick={activateEditMode.bind()}>{status}</span>
+          <span onDoubleClick={activateEditMode}>{status || "no status"}</span>
         </div>
       )}
       {editMode && (
         <div>
           <input
             autoFocus={true}
-            onBlur={deactivateEditMode.bind()}
+            onBlur={deactivateEditMode}
+            onChange={(event) => {
+              updateStatus(event.target.value);
+            }}
             value={status}
           />
         </div>

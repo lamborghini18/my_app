@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { textColorBlue, InfoBlockColor } from "../../../assets/colors/colors";
 import { text_24, heading_30 } from "../../../assets/fonts/fonts";
 
-const ProfileInfo = ({ profile }) => {
+const ProfileInfo = ({ profile, status, updateStatus }) => {
   if (!profile) {
     return <Preloader />;
   }
@@ -30,18 +30,14 @@ const ProfileInfo = ({ profile }) => {
         <StyledAvatar src={profile?.photos?.large || userPhoto} />
         <StyledInfoBlock>
           <StyledFullName>{profile.fullName}</StyledFullName>
-
-          <StyledInfo>{profile.lookingForAJobDescription}</StyledInfo>
+          <ProfileStatus status={status} updateStatus={updateStatus} />
           {getUserInfo(profile)}
           <StyledInfo>
-            Поиск работы:
-            {profile.lookingForAJob ? "Yes" : "No"}
+            {`Поиск работы: ${profile.lookingForAJob ? "Yes" : "No"}`}
           </StyledInfo>
+          <StyledInfo>{profile.lookingForAJobDescription}</StyledInfo>
         </StyledInfoBlock>
       </DescriptionBlock>
-      <div>
-        <ProfileStatus status={"hi"} />
-      </div>
     </>
   );
 };
