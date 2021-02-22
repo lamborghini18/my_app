@@ -41,12 +41,7 @@ const Users = ({
           <span>
             <div>
               <NavLink to={`/profile/${user.id}`}>
-                <StyledAvatar
-                  src={
-                    user?.photos?.small || userPhoto
-                    //   user.photos.small != null ? user.photos.small : userPhoto
-                  }
-                />
+                <StyledAvatar src={user?.photos?.small || userPhoto} />
               </NavLink>
             </div>
             <div>
