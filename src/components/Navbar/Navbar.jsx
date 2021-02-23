@@ -37,12 +37,6 @@ const Navbar = (props) => {
 
 export default Navbar;
 
-// const NavbarBlock = styled.div`
-//   grid-area: nav;
-//   background-color: ${NavbarColorLightBlue};
-//   padding: 20px;
-// `;
-
 const StyledNavlink = styled(NavLink).attrs(() => ({}))`
   padding-left: 10px;
   color: ${textColorBlue};

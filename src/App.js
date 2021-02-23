@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -12,8 +12,20 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/LoginContainer";
 import styled from "styled-components";
 import { BackgroundLightGreyColor } from "./assets/colors/colors";
+import { connect } from "react-redux";
+import { initializeApp } from "./redux/app_reducer";
+import { compose } from "redux";
+import Preloader from "./components/common/Preloader/Preloader";
 
-const App = (props) => {
+const App = ({ initialized, initializeApp }) => {
+  useEffect(() => {
+    initializeApp();
+  }, []);
+
+  if (!initialized) {
+    return <Preloader />;
+  }
+
   return (
     <AppWrapper>
       <HeaderContainer />
@@ -31,7 +43,13 @@ const App = (props) => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  initialized: state.app.initialized,
+});
+export default compose(
+  withRouter,
+  connect(mapStateToProps, { initializeApp })
+)(App);
 
 const AppWrapper = styled.div`
   margin: 0 auto;

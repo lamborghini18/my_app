@@ -29,7 +29,9 @@ const AddMessageForm = ({ handleSubmit }) => {
   );
 };
 
-export default reduxForm({ form: "dialogAddMessageForm" })(AddMessageForm);
+export default reduxForm({
+  form: "dialogAddMessageForm",
+})(AddMessageForm);
 
 const StyledNewMessage = styled.div`
   padding: 50px 0 10px 0;

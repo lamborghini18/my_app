@@ -9,7 +9,6 @@ import {
 import { connect } from "react-redux";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 
 const UsersContainer = ({
@@ -67,6 +66,5 @@ export default compose(
     setCurrentPage,
     toggleFollowingInProgress,
     getUsers,
-  }),
-  withAuthRedirect
+  })
 )(UsersContainer);

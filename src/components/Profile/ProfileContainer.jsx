@@ -8,7 +8,6 @@ import {
 } from "../../redux/profile_reducer";
 import { withRouter } from "react-router-dom";
 import { compose } from "redux";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 const ProfileContainer = ({
   getUserProfile,
@@ -18,11 +17,15 @@ const ProfileContainer = ({
   updateStatus,
   status,
   authUserId,
+  history,
 }) => {
   useEffect(() => {
     let userId = match.params.userId;
     if (!userId) {
       userId = authUserId;
+    }
+    if (!userId) {
+      history.push("/login");
     }
     getUserProfile(userId);
     getStatus(userId);
@@ -53,6 +56,5 @@ const mapDispatchToProps = {
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withRouter,
-  withAuthRedirect
+  withRouter
 )(ProfileContainer);

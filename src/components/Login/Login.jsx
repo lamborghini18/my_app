@@ -14,10 +14,10 @@ const Login = ({ login, isAuth }) => {
     return <Redirect to={"/profile"} />;
   }
   return (
-    <div>
+    <StyledLoginBlock>
       <StyledLogin>Login</StyledLogin>
       <LoginForm onSubmit={addLogin} />
-    </div>
+    </StyledLoginBlock>
   );
 };
 
@@ -26,4 +26,9 @@ export default Login;
 const StyledLogin = styled.div`
   color: ${textColorBlue};
   ${heading_30};
+`;
+const StyledLoginBlock = styled.div`
+  margin: auto;
+  width: 10em;
+  padding-top: 20px;
 `;
