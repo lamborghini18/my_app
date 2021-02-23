@@ -2,7 +2,7 @@ import React from "react";
 import Post from "./Post/Post";
 import styled from "styled-components";
 import { textColorBlue } from "../../../assets/colors/colors";
-import { text_24, heading_30 } from "../../../assets/fonts/fonts";
+import { text_22, heading_30 } from "../../../assets/fonts/fonts";
 import MyPostForm from "./MyPostForm";
 
 const MyPosts = ({ posts, addPost }) => {
@@ -37,7 +37,7 @@ const PostsBlock = styled.div`
 `;
 const StyledText = styled.div`
   color: ${textColorBlue};
-  ${text_24};
+  ${text_22};
 `;
 const StyledHeader = styled.div`
   color: ${textColorBlue};

@@ -1,23 +1,25 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import ListItem from "@material-ui/core/ListItem";
-import {
-  NavbarColorLightBlue,
-  NavLinkColorWhite,
-  textColorBlue,
-} from "../../assets/colors/colors";
+import { ListItem, Paper } from "@material-ui/core";
+import { NavLinkGreyColor, textColorBlue } from "../../assets/colors/colors";
+import AccountBoxTwoToneIcon from "@material-ui/icons/AccountBoxTwoTone";
+import EmailTwoToneIcon from "@material-ui/icons/EmailTwoTone";
+import PeopleAltTwoToneIcon from "@material-ui/icons/PeopleAltTwoTone";
 
 const Navbar = (props) => {
   return (
-    <NavbarBlock>
+    <Paper>
       <ListItem button>
+        <AccountBoxTwoToneIcon />
         <StyledNavlink to="/profile">Profile</StyledNavlink>
       </ListItem>
       <ListItem button>
+        <EmailTwoToneIcon />
         <StyledNavlink to="/dialogs">Messages</StyledNavlink>
       </ListItem>
       <ListItem button>
+        <PeopleAltTwoToneIcon />
         <StyledNavlink to="/users">Users</StyledNavlink>
       </ListItem>
       <ListItem button>
@@ -29,23 +31,24 @@ const Navbar = (props) => {
       <ListItem button>
         <StyledNavlink to="settings">Settings</StyledNavlink>
       </ListItem>
-    </NavbarBlock>
+    </Paper>
   );
 };
 
 export default Navbar;
 
-const NavbarBlock = styled.div`
-  grid-area: nav;
-  background-color: ${NavbarColorLightBlue};
-  padding: 20px;
-`;
+// const NavbarBlock = styled.div`
+//   grid-area: nav;
+//   background-color: ${NavbarColorLightBlue};
+//   padding: 20px;
+// `;
 
 const StyledNavlink = styled(NavLink).attrs(() => ({}))`
-  color: ${NavLinkColorWhite};
+  padding-left: 10px;
+  color: ${textColorBlue};
   text-decoration: none;
   font-weight: 700;
   &:focus {
-    color: ${textColorBlue};
+    color: ${NavLinkGreyColor};
   }
 `;

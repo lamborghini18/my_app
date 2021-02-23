@@ -4,7 +4,7 @@ import userPhoto from "../../../assets/images/user.png";
 import ProfileStatus from "./ProfileStatus";
 import styled from "styled-components";
 import { textColorBlue, InfoBlockColor } from "../../../assets/colors/colors";
-import { text_24, heading_30 } from "../../../assets/fonts/fonts";
+import { text_22, heading_30 } from "../../../assets/fonts/fonts";
 
 const ProfileInfo = ({ profile, status, updateStatus }) => {
   if (!profile) {
@@ -63,7 +63,7 @@ const StyledInfoBlock = styled.div`
 `;
 const StyledInfo = styled.div`
   color: ${textColorBlue};
-  ${text_24};
+  ${text_22};
   display: flex;
   flex-direction: row;
 `;

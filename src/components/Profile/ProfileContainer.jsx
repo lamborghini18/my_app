@@ -17,11 +17,12 @@ const ProfileContainer = ({
   getStatus,
   updateStatus,
   status,
+  authUserId,
 }) => {
   useEffect(() => {
     let userId = match.params.userId;
     if (!userId) {
-      userId = 13495;
+      userId = authUserId;
     }
     getUserProfile(userId);
     getStatus(userId);
@@ -40,6 +41,8 @@ const ProfileContainer = ({
 let mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
   status: state.profilePage.status,
+  authUserId: state.auth.userId,
+  isAuth: state.auth.isAuth,
 });
 
 const mapDispatchToProps = {

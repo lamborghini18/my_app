@@ -4,6 +4,7 @@ import Message from "./Message/Message";
 import styled from "styled-components";
 import { textColorLightBlue } from "../../assets/colors/colors";
 import AddMessageForm from "./AddMessageForm";
+import Paper from "@material-ui/core/Paper";
 
 const Dialogs = ({ dialogsPage, addMessage }) => {
   const state = dialogsPage;
@@ -46,6 +47,7 @@ const DialogsBlock = styled.div`
 const ItemBlock = styled.div`
   padding: 10px;
 `;
+
 const AreaBlock = styled.div`
   margin: 10px;
   height: 500px;

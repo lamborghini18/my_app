@@ -11,6 +11,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/LoginContainer";
 import styled from "styled-components";
+import { BackgroundLightGreyColor } from "./assets/colors/colors";
 
 const App = (props) => {
   return (
@@ -46,5 +47,5 @@ const AppWrapper = styled.div`
 
 const AppWrapperContainer = styled.div`
   grid-area: cont;
-  background-color: rgba(118, 50, 151, 0.133);
+  background-color: ${BackgroundLightGreyColor};
 `;

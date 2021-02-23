@@ -1,6 +1,6 @@
 import React from "react";
 import { textColorBlue } from "../../../assets/colors/colors";
-import { text_24 } from "../../../assets/fonts/fonts";
+import { text_22 } from "../../../assets/fonts/fonts";
 import styled from "styled-components";
 
 const Message = ({ message }) => {
@@ -11,5 +11,5 @@ export default Message;
 
 const StyledText = styled.div`
   color: ${textColorBlue};
-  ${text_24};
+  ${text_22};
 `;

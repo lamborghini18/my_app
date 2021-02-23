@@ -1,6 +1,6 @@
-export const text_24 = {
+export const text_22 = {
   fontFamily: "fontMedium",
-  fontSize: "24px",
+  fontSize: "22px",
   lineHeight: "32px",
   letterSpasing: "0px",
 };

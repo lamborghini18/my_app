@@ -1,8 +1,8 @@
 import React from "react";
-import userIcon from "../../../../assets/images/doctor.png";
+import userIcon from "../../../../assets/images/user.png";
 import styled from "styled-components";
 import { textColorBlue } from "../../../../assets/colors/colors";
-import { text_24 } from "../../../../assets/fonts/fonts";
+import { text_22 } from "../../../../assets/fonts/fonts";
 
 const Post = ({ message }) => {
   return (
@@ -29,5 +29,5 @@ const StyledAvatar = styled.img`
 
 const StyledText = styled.div`
   color: ${textColorBlue};
-  ${text_24};
+  ${text_22};
 `;

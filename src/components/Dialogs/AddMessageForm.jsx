@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, TextField } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import styled from "styled-components";
 import { Field, reduxForm } from "redux-form";
@@ -21,12 +21,7 @@ const AddMessageForm = ({ handleSubmit }) => {
       </StyledNewMessage>
       <div>
         <button>send</button>
-        {/* <Button
-         
-          endIcon={<SendIcon />}
-          variant="contained"
-          color="primary"
-        >
+        {/* <Button endIcon={<SendIcon />} variant="contained" color="primary">
           Send
         </Button> */}
       </div>

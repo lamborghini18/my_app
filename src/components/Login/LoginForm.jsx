@@ -2,8 +2,10 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { Input } from "../common/FormsControls/FormsControls";
 import { required } from "../../utils/validators/validators";
+import styled from "styled-components";
+import { ErrorRedColor } from "../../assets/colors/colors";
 
-const LoginForm = ({ handleSubmit }) => {
+const LoginForm = ({ handleSubmit, error }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -27,6 +29,8 @@ const LoginForm = ({ handleSubmit }) => {
         <Field type={"checkbox"} name={"rememberMe"} component={"input"} />
         remember me
       </div>
+      {error && <ErrorText>{error}</ErrorText>}
+
       <div>
         <button>Login</button>
       </div>
@@ -35,3 +39,7 @@ const LoginForm = ({ handleSubmit }) => {
 };
 
 export default reduxForm({ form: "login" })(LoginForm);
+
+const ErrorText = styled.div`
+  color: ${ErrorRedColor};
+`;

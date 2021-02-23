@@ -1,6 +1,7 @@
 import { TextField } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
+import { ErrorRedColor } from "../../../assets/colors/colors";
 
 const FormControl = ({ input, meta, child, ...props }) => {
   const hasError = meta.touched && meta.error;
@@ -36,5 +37,5 @@ export const Input = (props) => {
 };
 
 const Error = styled.div`
-  color: red;
+  color: ${ErrorRedColor};
 `;
