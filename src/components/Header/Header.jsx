@@ -9,8 +9,9 @@ import {
   IconButton,
 } from "@material-ui/core/";
 import MenuIcon from "@material-ui/icons/Menu";
+import { NavLinkColorWhite } from "../../assets/colors/colors";
 
-const Header = ({ isAuth, login }) => {
+const Header = ({ isAuth, login, logout }) => {
   return (
     <HeaderBlock>
       <AppBar position="static">
@@ -22,9 +23,17 @@ const Header = ({ isAuth, login }) => {
             <Typography variant="h6">Profile</Typography>
           </TypographyBlock>
           <LoginBlock>
-            <Button color="inherit">
-              {isAuth ? login : <NavLink to={"/login"}> Login</NavLink>}
-            </Button>
+            {isAuth ? (
+              <div>
+                <Button color="inherit" onClick={logout}>
+                  {login}
+                </Button>
+              </div>
+            ) : (
+              <Button color="inherit">
+                <StyledNavLink to={"/login"}> Login</StyledNavLink>
+              </Button>
+            )}
           </LoginBlock>
         </Toolbar>
       </AppBar>
@@ -46,4 +55,9 @@ const LoginBlock = styled.div`
   text-decoration: none;
   position: absolute;
   right: 0;
+`;
+
+const StyledNavLink = styled(NavLink)`
+  color: ${NavLinkColorWhite};
+  text-decoration: none;
 `;

@@ -1,12 +1,11 @@
 import React from "react";
 import DialogItem from "./DialogItem/DialogsItem";
 import Message from "./Message/Message";
-import { Button, TextField } from "@material-ui/core";
-import SendIcon from "@material-ui/icons/Send";
 import styled from "styled-components";
 import { textColorLightBlue } from "../../assets/colors/colors";
+import AddMessageForm from "./AddMessageForm";
 
-const Dialogs = ({ dialogsPage, updateNewMessageText, addMessage }) => {
+const Dialogs = ({ dialogsPage, addMessage }) => {
   const state = dialogsPage;
 
   const dialogsElements = state.dialogs.map((dialog) => (
@@ -21,37 +20,13 @@ const Dialogs = ({ dialogsPage, updateNewMessageText, addMessage }) => {
     <Message message={message.message} key={message.id} id={message.id} />
   ));
 
-  const onMessageChange = (event) => {
-    const text = event.target.value;
-    updateNewMessageText(text);
-  };
-
   return (
     <DialogsBlock>
       <ItemBlock>{dialogsElements}</ItemBlock>
       <AreaBlock>
         <MessagesBlock>
           <div>{messagesElements}</div>
-          <StyledNewMessage>
-            <TextField
-              id="outlined-basic"
-              label="New message"
-              variant="outlined"
-              placeholder="Enter your message"
-              onChange={onMessageChange}
-              value={state.newMessageText}
-            />
-          </StyledNewMessage>
-          <div>
-            <Button
-              onClick={addMessage}
-              endIcon={<SendIcon />}
-              variant="contained"
-              color="primary"
-            >
-              Send
-            </Button>
-          </div>
+          <AddMessageForm addMessage={addMessage} />
         </MessagesBlock>
       </AreaBlock>
     </DialogsBlock>
@@ -67,6 +42,7 @@ const DialogsBlock = styled.div`
 const ItemBlock = styled.div`
   padding: 10px;
 `;
+
 const AreaBlock = styled.div`
   margin: 10px;
   height: 500px;
@@ -74,7 +50,4 @@ const AreaBlock = styled.div`
 `;
 const MessagesBlock = styled.div`
   padding: 10px;
-`;
-const StyledNewMessage = styled.div`
-  padding: 50px 0 10px 0;
 `;

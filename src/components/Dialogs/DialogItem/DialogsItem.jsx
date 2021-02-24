@@ -1,13 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { NavLinkDarkGreyColor } from "../../../assets/colors/colors";
+import { ListItem } from "@material-ui/core";
 
 const DialogItem = ({ avatarURL, name, id }) => (
   <>
-    <StyledNavlink to={`/dialogs/${id}`}>
-      <StyledAvatar src={avatarURL} />
-      <TextName>{name}</TextName>
-    </StyledNavlink>
+    <ListItem button>
+      <StyledNavlink to={`/dialogs/${id}`}>
+        <StyledAvatar src={avatarURL} />
+        <TextName>{name}</TextName>
+      </StyledNavlink>
+    </ListItem>
   </>
 );
 
@@ -26,4 +30,6 @@ const StyledNavlink = styled(NavLink)`
   display: flex;
   align-items: center;
   flex-direction: row;
+  color: ${NavLinkDarkGreyColor};
+  text-decoration: none;
 `;

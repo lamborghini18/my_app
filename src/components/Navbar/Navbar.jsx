@@ -1,23 +1,27 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import ListItem from "@material-ui/core/ListItem";
+import { ListItem, Paper } from "@material-ui/core";
+import { NavLinkGreyColor, textColorBlue } from "../../assets/colors/colors";
 import {
-  NavbarColorLightBlue,
-  NavLinkColorWhite,
-  textColorBlue,
-} from "../../assets/colors/colors";
+  AccountBoxTwoTone,
+  EmailTwoTone,
+  PeopleAltTwoTone,
+} from "@material-ui/icons";
 
 const Navbar = (props) => {
   return (
-    <NavbarBlock>
+    <Paper>
       <ListItem button>
+        <AccountBoxTwoTone />
         <StyledNavlink to="/profile">Profile</StyledNavlink>
       </ListItem>
       <ListItem button>
+        <EmailTwoTone />
         <StyledNavlink to="/dialogs">Messages</StyledNavlink>
       </ListItem>
       <ListItem button>
+        <PeopleAltTwoTone />
         <StyledNavlink to="/users">Users</StyledNavlink>
       </ListItem>
       <ListItem button>
@@ -29,23 +33,18 @@ const Navbar = (props) => {
       <ListItem button>
         <StyledNavlink to="settings">Settings</StyledNavlink>
       </ListItem>
-    </NavbarBlock>
+    </Paper>
   );
 };
 
 export default Navbar;
 
-const NavbarBlock = styled.div`
-  grid-area: nav;
-  background-color: ${NavbarColorLightBlue};
-  padding: 20px;
-`;
-
 const StyledNavlink = styled(NavLink).attrs(() => ({}))`
-  color: ${NavLinkColorWhite};
+  padding-left: 10px;
+  color: ${textColorBlue};
   text-decoration: none;
   font-weight: 700;
   &:focus {
-    color: ${textColorBlue};
+    color: ${NavLinkGreyColor};
   }
 `;
