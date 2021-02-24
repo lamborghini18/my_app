@@ -1,39 +1,45 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { Input } from "../common/FormsControls/FormsControls";
-import { required } from "../../utils/validators/validators";
+import { required, emailRequired } from "../../utils/validators/validators";
 import styled from "styled-components";
 import { ErrorRedColor } from "../../assets/colors/colors";
+import { Button } from "@material-ui/core";
+import { Textarea } from "../common/FormsControls/FormsControls";
 
 const LoginForm = ({ handleSubmit, error }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <FieldBlock>
         <Field
           placeholder={"email"}
+          label="email"
           name={"email"}
-          component={Input}
-          validate={[required]}
+          component={Textarea}
+          validate={[required, emailRequired]}
         />
-      </div>
-      <div>
+      </FieldBlock>
+      <FieldBlock>
         <Field
+          component={Textarea}
+          label="password"
           placeholder={"Password"}
           name={"password"}
-          component={Input}
           validate={[required]}
           type={"password"}
         />
-      </div>
-      <div>
+      </FieldBlock>
+      <FieldBlock>
         <Field type={"checkbox"} name={"rememberMe"} component={"input"} />
         remember me
-      </div>
+      </FieldBlock>
       {error && <ErrorText>{error}</ErrorText>}
 
-      <div>
-        <button>Login</button>
-      </div>
+      <FieldBlock>
+        <Button type="submit" variant="contained" color="primary">
+          Send
+        </Button>
+      </FieldBlock>
     </form>
   );
 };
@@ -42,4 +48,7 @@ export default reduxForm({ form: "login" })(LoginForm);
 
 const ErrorText = styled.div`
   color: ${ErrorRedColor};
+`;
+const FieldBlock = styled.div`
+  margin: 10px;
 `;

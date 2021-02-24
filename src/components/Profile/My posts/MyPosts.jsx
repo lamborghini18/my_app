@@ -17,14 +17,10 @@ const MyPosts = ({ posts, addPost }) => {
     ));
   };
 
-  const addNewPost = (values) => {
-    addPost(values.newPost);
-  };
-
   return (
     <PostsBlock>
       <StyledHeader> My post</StyledHeader>
-      <MyPostForm onSubmit={addNewPost} />
+      <MyPostForm addPost={addPost} />
       <StyledText>{getPostElements()}</StyledText>
     </PostsBlock>
   );

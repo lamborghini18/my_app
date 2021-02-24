@@ -24,6 +24,8 @@ const Login = ({ login, isAuth }) => {
 export default Login;
 
 const StyledLogin = styled.div`
+  text-align: center;
+  padding: 0 10px;
   color: ${textColorBlue};
   ${heading_30};
 `;

@@ -5,11 +5,15 @@ import styled from "styled-components";
 import { Field, reduxForm } from "redux-form";
 import { Textarea } from "../common/FormsControls/FormsControls";
 import { required } from "../../utils/validators/validators";
-import { BlueButton } from "../common/Buttons/Buttons";
 
-const AddMessageForm = ({ handleSubmit }) => {
+const AddMessageForm = ({ handleSubmit, reset, addMessage }) => {
+  const addNewMessage = (values) => {
+    addMessage(values.newMessageBody);
+    reset();
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(addNewMessage)}>
       <StyledNewMessage>
         <Field
           component={Textarea}
@@ -20,10 +24,14 @@ const AddMessageForm = ({ handleSubmit }) => {
         />
       </StyledNewMessage>
       <div>
-        <button>send</button>
-        {/* <Button endIcon={<SendIcon />} variant="contained" color="primary">
+        <Button
+          type="submit"
+          endIcon={<SendIcon />}
+          variant="contained"
+          color="primary"
+        >
           Send
-        </Button> */}
+        </Button>
       </div>
     </form>
   );

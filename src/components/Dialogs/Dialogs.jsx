@@ -20,17 +20,13 @@ const Dialogs = ({ dialogsPage, addMessage }) => {
     <Message message={message.message} key={message.id} id={message.id} />
   ));
 
-  const addNewMessage = (values) => {
-    addMessage(values.newMessageBody);
-  };
-
   return (
     <DialogsBlock>
       <ItemBlock>{dialogsElements}</ItemBlock>
       <AreaBlock>
         <MessagesBlock>
           <div>{messagesElements}</div>
-          <AddMessageForm onSubmit={addNewMessage} />
+          <AddMessageForm addMessage={addMessage} />
         </MessagesBlock>
       </AreaBlock>
     </DialogsBlock>

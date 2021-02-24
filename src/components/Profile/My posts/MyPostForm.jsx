@@ -6,12 +6,19 @@ import {
   maxLenghtCreator,
 } from "../../../utils/validators/validators";
 import { Textarea } from "../../common/FormsControls/FormsControls";
+import { Button } from "@material-ui/core";
+import SendIcon from "@material-ui/icons/Send";
 
 const maxLenght10 = maxLenghtCreator(10);
 
-const MyPostForm = ({ handleSubmit }) => {
+const MyPostForm = ({ handleSubmit, reset, addPost }) => {
+  const addNewPost = (values) => {
+    addPost(values.newPost);
+    reset();
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(addNewPost)}>
       <TextFieldBlock>
         <Field
           component={Textarea}
@@ -22,7 +29,14 @@ const MyPostForm = ({ handleSubmit }) => {
         />
       </TextFieldBlock>
       <AddPostBlock>
-        <button>Add post</button>
+        <Button
+          type="submit"
+          endIcon={<SendIcon />}
+          variant="contained"
+          color="primary"
+        >
+          Send
+        </Button>
       </AddPostBlock>
     </form>
   );
