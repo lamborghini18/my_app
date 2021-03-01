@@ -2,9 +2,9 @@ export const required = (value) => {
   if (!value) return "Field is required";
 };
 
-export const maxLenghtCreator = (maxLenght) => (value) =>
-  value && value.length > maxLenght
-    ? `Max lenght is ${maxLenght} symbols`
+export const maxLengthCreator = (maxLength) => (value) =>
+  value && value.length > maxLength
+    ? `Max length is ${maxLength} symbols`
     : null;
 
 export const emailRequired = (value) => {

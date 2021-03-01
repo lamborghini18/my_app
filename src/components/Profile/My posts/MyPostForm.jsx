@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { Field, reduxForm } from "redux-form";
 import {
   required,
-  maxLenghtCreator,
+  maxLengthCreator,
 } from "../../../utils/validators/validators";
 import { Textarea } from "../../common/FormsControls/FormsControls";
 import { Button } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 
-const maxLenght10 = maxLenghtCreator(10);
+const maxLength10 = maxLengthCreator(10);
 
 const MyPostForm = ({ handleSubmit, reset, addPost }) => {
   const addNewPost = (values) => {
@@ -25,7 +25,7 @@ const MyPostForm = ({ handleSubmit, reset, addPost }) => {
           name="newPost"
           placeholder="Enter your post"
           label="NewPost"
-          validate={[required, maxLenght10]}
+          validate={[required, maxLength10]}
         />
       </TextFieldBlock>
       <AddPostBlock>
