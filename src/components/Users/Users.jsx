@@ -1,9 +1,7 @@
 import React from "react";
-import userPhoto from "../../assets/images/user.png";
-import { NavLink } from "react-router-dom";
 import Pagination from "@material-ui/lab/Pagination";
-import Button from "@material-ui/core/Button";
 import styled from "styled-components";
+import User from "./User";
 
 const Users = ({
   totalUsersCount,
@@ -36,48 +34,12 @@ const Users = ({
           page={currentPage}
         />
       </StyledPaginator>
-      {users.map((user) => (
-        <StyledUserItems key={user.id}>
-          <span>
-            <div>
-              <NavLink to={`/profile/${user.id}`}>
-                <StyledAvatar src={user?.photos?.small || userPhoto} />
-              </NavLink>
-            </div>
-            <div>
-              {user.followed ? (
-                <Button
-                  size="small"
-                  variant="contained"
-                  color="primary"
-                  disabled={followingInProgress.some((id) => id === user.id)}
-                  onClick={() => {
-                    unfollow(user.id);
-                  }}
-                >
-                  unFollow
-                </Button>
-              ) : (
-                <Button
-                  size="small"
-                  variant="contained"
-                  color="primary"
-                  disabled={followingInProgress.some((id) => id === user.id)}
-                  onClick={() => {
-                    follow(user.id);
-                  }}
-                >
-                  Follow
-                </Button>
-              )}
-            </div>
-          </span>
-          <span>
-            <div>{user.name}</div>
-            <div>{user.status}</div>
-          </span>
-        </StyledUserItems>
-      ))}
+      <User
+        users={users}
+        followingInProgress={followingInProgress}
+        unfollow={unfollow}
+        follow={follow}
+      />
     </div>
   );
 };
@@ -88,11 +50,4 @@ const StyledPaginator = styled.div`
   margin: 10px;
   display: flex;
   justify-content: center;
-`;
-
-const StyledUserItems = styled.div`
-  padding: 10px 10px 10px 20px;
-`;
-const StyledAvatar = styled.img`
-  width: 100px;
 `;
