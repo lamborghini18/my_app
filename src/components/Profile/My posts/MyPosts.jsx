@@ -5,7 +5,8 @@ import { textColorBlue } from "../../../assets/colors/colors";
 import { text_22, heading_30 } from "../../../assets/fonts/fonts";
 import MyPostForm from "./MyPostForm";
 
-const MyPosts = ({ posts, addPost }) => {
+const MyPosts = React.memo(({ posts, addPost }) => {
+  console.log("hi");
   const getPostElements = () => {
     return posts.map((post) => (
       <Post
@@ -24,7 +25,7 @@ const MyPosts = ({ posts, addPost }) => {
       <StyledText>{getPostElements()}</StyledText>
     </PostsBlock>
   );
-};
+});
 
 export default MyPosts;
 
