@@ -41,7 +41,7 @@ const UsersContainer = ({
 
   return (
     <>
-      {isFetching ? <Preloader /> : null}
+      {isFetching && <Preloader />}
       <Users
         totalUsersCount={totalUsersCount}
         pageSize={pageSize}

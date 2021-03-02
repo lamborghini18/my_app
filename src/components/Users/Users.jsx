@@ -47,7 +47,7 @@ const Users = ({
 export default Users;
 
 const StyledPaginator = styled.div`
-  margin: 10px;
+  padding: 10px;
   display: flex;
   justify-content: center;
 `;

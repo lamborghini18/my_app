@@ -5,51 +5,49 @@ import Button from "@material-ui/core/Button";
 import styled from "styled-components";
 
 const User = ({ users, followingInProgress, unfollow, follow }) => {
+  const userItems = users.map((user) => {
+    return (
+      <StyledUserItems key={user.id}>
+        <NavLink to={`/profile/${user.id}`}>
+          <StyledAvatar src={user?.photos?.small || userPhoto} />
+        </NavLink>
+        <div>
+          {user.followed ? (
+            <Button
+              size="small"
+              variant="contained"
+              color="primary"
+              disabled={followingInProgress.some((id) => id === user.id)}
+              onClick={() => {
+                unfollow(user.id);
+              }}
+            >
+              unFollow
+            </Button>
+          ) : (
+            <Button
+              size="small"
+              variant="contained"
+              color="primary"
+              disabled={followingInProgress.some((id) => id === user.id)}
+              onClick={() => {
+                follow(user.id);
+              }}
+            >
+              Follow
+            </Button>
+          )}
+        </div>
+        <div>{user.name}</div>
+        <div>{user.status}</div>
+      </StyledUserItems>
+    );
+  });
+
   return (
-    <div>
-      {users.map((user) => (
-        <StyledUserItems key={user.id}>
-          <span>
-            <div>
-              <NavLink to={`/profile/${user.id}`}>
-                <StyledAvatar src={user?.photos?.small || userPhoto} />
-              </NavLink>
-            </div>
-            <div>
-              {user.followed ? (
-                <Button
-                  size="small"
-                  variant="contained"
-                  color="primary"
-                  disabled={followingInProgress.some((id) => id === user.id)}
-                  onClick={() => {
-                    unfollow(user.id);
-                  }}
-                >
-                  unFollow
-                </Button>
-              ) : (
-                <Button
-                  size="small"
-                  variant="contained"
-                  color="primary"
-                  disabled={followingInProgress.some((id) => id === user.id)}
-                  onClick={() => {
-                    follow(user.id);
-                  }}
-                >
-                  Follow
-                </Button>
-              )}
-            </div>
-          </span>
-          <span>
-            <div>{user.name}</div>
-            <div>{user.status}</div>
-          </span>
-        </StyledUserItems>
-      ))}
-    </div>
+    <>
+      <div>{userItems}</div>
+    </>
   );
 };
 
