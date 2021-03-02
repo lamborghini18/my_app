@@ -5,33 +5,33 @@ import { textColorBlue } from "../../../assets/colors/colors";
 import { text_22, heading_30 } from "../../../assets/fonts/fonts";
 import MyPostForm from "./MyPostForm";
 
-const MyPosts = ({ posts, addPost }) => {
-  const getPostElements = () => {
-    return posts.map((post) => (
+const MyPosts = React.memo(({ posts, addPost }) => {
+  const postElements = posts.map((post) => {
+    return (
       <Post
         message={post.message}
         key={post.id}
         id={post.id}
         likesCount={post.likesCount}
       />
-    ));
-  };
+    );
+  });
 
   return (
     <PostsBlock>
       <StyledHeader> My post</StyledHeader>
       <MyPostForm addPost={addPost} />
-      <StyledText>{getPostElements()}</StyledText>
+      <StyledPostBlock>{postElements}</StyledPostBlock>
     </PostsBlock>
   );
-};
+});
 
 export default MyPosts;
 
 const PostsBlock = styled.div`
   padding: 10px;
 `;
-const StyledText = styled.div`
+const StyledPostBlock = styled.div`
   color: ${textColorBlue};
   ${text_22};
 `;
