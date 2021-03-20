@@ -14,14 +14,10 @@ const Users = ({
   follow,
 }) => {
   let pagesCount = Math.ceil(totalUsersCount / pageSize);
-  let pages = [];
-  for (let i = 1; i <= pagesCount; i++) {
-    pages.push(i);
-  }
 
   return (
     <div>
-      <StyledPaginator>
+      <PaginatorBlock>
         <Pagination
           count={pagesCount}
           variant="outlined"
@@ -33,7 +29,7 @@ const Users = ({
           }}
           page={currentPage}
         />
-      </StyledPaginator>
+      </PaginatorBlock>
       <User
         users={users}
         followingInProgress={followingInProgress}
@@ -46,7 +42,7 @@ const Users = ({
 
 export default Users;
 
-const StyledPaginator = styled.div`
+const PaginatorBlock = styled.div`
   padding: 10px;
   display: flex;
   justify-content: center;

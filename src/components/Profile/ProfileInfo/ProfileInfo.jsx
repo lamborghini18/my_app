@@ -15,10 +15,10 @@ const ProfileInfo = ({ profile, status, updateStatus }) => {
     const contactsKeys = Object.keys(profile.contacts);
     const result = contactsKeys.map((key) => {
       return (
-        <StyledInfo>
-          <StyledSocial>{`${key}: `}</StyledSocial>
+        <UserInfo>
+          <SocialNetworks>{`${key}: `}</SocialNetworks>
           <div>{`${profile.contacts[key]}`}</div>
-        </StyledInfo>
+        </UserInfo>
       );
     });
     return result;
@@ -27,16 +27,16 @@ const ProfileInfo = ({ profile, status, updateStatus }) => {
   return (
     <>
       <DescriptionBlock>
-        <StyledAvatar src={profile?.photos?.large || userPhoto} />
-        <StyledInfoBlock>
-          <StyledFullName>{profile.fullName}</StyledFullName>
+        <UserAvatar src={profile?.photos?.large || userPhoto} />
+        <InfoBlock>
+          <FullName>{profile.fullName}</FullName>
           <ProfileStatus status={status} updateStatus={updateStatus} />
           {getUserInfo(profile)}
-          <StyledInfo>
+          <UserInfo>
             {`Поиск работы: ${profile.lookingForAJob ? "Yes" : "No"}`}
-          </StyledInfo>
-          <StyledInfo>{profile.lookingForAJobDescription}</StyledInfo>
-        </StyledInfoBlock>
+          </UserInfo>
+          <UserInfo>{profile.lookingForAJobDescription}</UserInfo>
+        </InfoBlock>
       </DescriptionBlock>
     </>
   );
@@ -51,26 +51,26 @@ const DescriptionBlock = styled.div`
   grid-template-columns: 1fr 3fr;
   grid-gap: 10px;
 `;
-const StyledAvatar = styled.img`
+const UserAvatar = styled.img`
   grid-area: ava;
   width: 300px;
 `;
-const StyledInfoBlock = styled.div`
+const InfoBlock = styled.div`
   padding: 20px;
   grid-area: info;
   background-color: ${InfoBlockColor};
   color: ${textColorBlue};
 `;
-const StyledInfo = styled.div`
+const UserInfo = styled.div`
   color: ${textColorBlue};
   ${text_22};
   display: flex;
   flex-direction: row;
 `;
-const StyledFullName = styled.div`
+const FullName = styled.div`
   color: ${textColorBlue};
   ${heading_30};
 `;
-const StyledSocial = styled.div`
+const SocialNetworks = styled.div`
   width: 200px;
 `;

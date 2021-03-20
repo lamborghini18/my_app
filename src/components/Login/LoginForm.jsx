@@ -1,6 +1,5 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import { Input } from "../common/FormsControls/FormsControls";
 import { required, emailRequired } from "../../utils/validators/validators";
 import styled from "styled-components";
 import { ErrorRedColor } from "../../assets/colors/colors";
