@@ -7,7 +7,6 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-// import LoginPage from "./components/Login/LoginContainer";
 import styled from "styled-components";
 import { BackgroundLightGreyColor } from "./assets/colors/colors";
 import { connect } from "react-redux";

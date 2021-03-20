@@ -31,7 +31,7 @@ const Header = ({ isAuth, login, logout }) => {
               </div>
             ) : (
               <Button color="inherit">
-                <StyledNavLink to={"/login"}> Login</StyledNavLink>
+                <LoginButton to={"/login"}> Login</LoginButton>
               </Button>
             )}
           </LoginBlock>
@@ -57,7 +57,7 @@ const LoginBlock = styled.div`
   right: 0;
 `;
 
-const StyledNavLink = styled(NavLink)`
+const LoginButton = styled(NavLink)`
   color: ${NavLinkColorWhite};
   text-decoration: none;
 `;

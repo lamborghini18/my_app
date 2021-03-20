@@ -14,7 +14,7 @@ const AddMessageForm = ({ handleSubmit, reset, addMessage }) => {
 
   return (
     <form onSubmit={handleSubmit(addNewMessage)}>
-      <StyledNewMessage>
+      <NewMessageBlock>
         <Field
           component={Textarea}
           name="newMessageBody"
@@ -22,7 +22,7 @@ const AddMessageForm = ({ handleSubmit, reset, addMessage }) => {
           placeholder="Enter your message"
           validate={[required]}
         />
-      </StyledNewMessage>
+      </NewMessageBlock>
       <div>
         <Button
           type="submit"
@@ -41,6 +41,6 @@ export default reduxForm({
   form: "dialogAddMessageForm",
 })(AddMessageForm);
 
-const StyledNewMessage = styled.div`
+const NewMessageBlock = styled.div`
   padding: 50px 0 10px 0;
 `;

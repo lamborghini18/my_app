@@ -4,12 +4,12 @@ import { text_22 } from "../../../assets/fonts/fonts";
 import styled from "styled-components";
 
 const Message = ({ message }) => {
-  return <StyledText>{message}</StyledText>;
+  return <MessageBlock>{message}</MessageBlock>;
 };
 
 export default Message;
 
-const StyledText = styled.div`
+const MessageBlock = styled.div`
   color: ${textColorBlue};
   ${text_22};
 `;

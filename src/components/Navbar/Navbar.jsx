@@ -14,24 +14,24 @@ const Navbar = (props) => {
     <Paper>
       <ListItem button>
         <AccountBoxTwoTone />
-        <StyledNavlink to="/profile">Profile</StyledNavlink>
+        <NavbarItem to="/profile">Profile</NavbarItem>
       </ListItem>
       <ListItem button>
         <EmailTwoTone />
-        <StyledNavlink to="/dialogs">Messages</StyledNavlink>
+        <NavbarItem to="/dialogs">Messages</NavbarItem>
       </ListItem>
       <ListItem button>
         <PeopleAltTwoTone />
-        <StyledNavlink to="/users">Users</StyledNavlink>
+        <NavbarItem to="/users">Users</NavbarItem>
       </ListItem>
       <ListItem button>
-        <StyledNavlink to="/news">News</StyledNavlink>
+        <NavbarItem to="/news">News</NavbarItem>
       </ListItem>
       <ListItem button>
-        <StyledNavlink to="/music">Music</StyledNavlink>
+        <NavbarItem to="/music">Music</NavbarItem>
       </ListItem>
       <ListItem button>
-        <StyledNavlink to="settings">Settings</StyledNavlink>
+        <NavbarItem to="settings">Settings</NavbarItem>
       </ListItem>
     </Paper>
   );
@@ -39,7 +39,7 @@ const Navbar = (props) => {
 
 export default Navbar;
 
-const StyledNavlink = styled(NavLink).attrs(() => ({}))`
+const NavbarItem = styled(NavLink).attrs(() => ({}))`
   padding-left: 10px;
   color: ${textColorBlue};
   text-decoration: none;

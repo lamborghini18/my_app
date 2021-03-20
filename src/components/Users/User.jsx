@@ -7,9 +7,9 @@ import styled from "styled-components";
 const User = ({ users, followingInProgress, unfollow, follow }) => {
   const userItems = users.map((user) => {
     return (
-      <StyledUserItems key={user.id}>
+      <UserItemsBlock key={user.id}>
         <NavLink to={`/profile/${user.id}`}>
-          <StyledAvatar src={user?.photos?.small || userPhoto} />
+          <UserPhoto src={user?.photos?.small || userPhoto} />
         </NavLink>
         <div>
           {user.followed ? (
@@ -40,7 +40,7 @@ const User = ({ users, followingInProgress, unfollow, follow }) => {
         </div>
         <div>{user.name}</div>
         <div>{user.status}</div>
-      </StyledUserItems>
+      </UserItemsBlock>
     );
   });
 
@@ -53,9 +53,9 @@ const User = ({ users, followingInProgress, unfollow, follow }) => {
 
 export default User;
 
-const StyledUserItems = styled.div`
+const UserItemsBlock = styled.div`
   padding: 10px 10px 10px 20px;
 `;
-const StyledAvatar = styled.img`
+const UserPhoto = styled.img`
   width: 100px;
 `;
