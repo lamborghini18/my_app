@@ -1,6 +1,7 @@
-import MainApp from "./App";
-import ReactDOM, { render, unmountComponentAtNode } from "react-dom";
+import React from "react";
+import ProfileStatus from "./ProfileStatus";
 import { act } from "react-dom/test-utils";
+import { render, unmountComponentAtNode } from "react-dom";
 
 let container;
 
@@ -15,11 +16,9 @@ afterEach(() => {
   container = null;
 });
 
-test("renders without crashing", () => {
+it("status from props should be in the state", () => {
   act(() => {
-    ReactDOM.render(<MainApp />, container);
+    render(<ProfileStatus status="test" />, container);
   });
-  act(() => {
-    ReactDOM.unmountComponentAtNode(container);
-  });
+  expect(container.textContent).toBe("test");
 });
