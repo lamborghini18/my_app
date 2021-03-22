@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { textColorBlue, InfoBlockColor } from "../../../assets/colors/colors";
 import { text_22, heading_30 } from "../../../assets/fonts/fonts";
 
-const ProfileInfo = ({ profile, status, updateStatus }) => {
+const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
   if (!profile) {
     return <Preloader />;
   }
@@ -24,10 +24,17 @@ const ProfileInfo = ({ profile, status, updateStatus }) => {
     return result;
   };
 
+  const onMainPhotoSelected = (event) => {
+    if (event.target.files.length) {
+      savePhoto(event.target.files[0]);
+    }
+  };
+
   return (
     <>
       <DescriptionBlock>
         <UserAvatar src={profile?.photos?.large || userPhoto} />
+        {isOwner && <input type={"file"} onChange={onMainPhotoSelected} />}
         <InfoBlock>
           <FullName>{profile.fullName}</FullName>
           <ProfileStatus status={status} updateStatus={updateStatus} />
