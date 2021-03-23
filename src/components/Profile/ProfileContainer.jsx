@@ -6,6 +6,7 @@ import {
   updateStatus,
   getStatus,
   savePhoto,
+  saveProfile,
 } from "../../redux/profile_reducer";
 import { withRouter } from "react-router-dom";
 import { compose } from "redux";
@@ -20,6 +21,7 @@ const ProfileContainer = ({
   authUserId,
   history,
   savePhoto,
+  saveProfile,
 }) => {
   useEffect(() => {
     let userId = match.params.userId;
@@ -41,6 +43,7 @@ const ProfileContainer = ({
       status={status}
       updateStatus={updateStatus}
       savePhoto={savePhoto}
+      saveProfile={saveProfile}
     />
   );
 };
@@ -57,6 +60,7 @@ const mapDispatchToProps = {
   getStatus: getStatus,
   updateStatus: updateStatus,
   savePhoto: savePhoto,
+  saveProfile: saveProfile,
 };
 
 export default compose(
