@@ -33,7 +33,7 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
         remember me
       </FieldBlock>
 
-      {captchaUrl && <img src={captchaUrl} />}
+      {captchaUrl && <img src={captchaUrl} alt="" />}
       {captchaUrl && (
         <FieldBlock>
           <Field
