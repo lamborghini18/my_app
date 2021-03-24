@@ -1,7 +1,13 @@
 import logo from "./logo.svg";
 import React, { useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
-import { Route, withRouter } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  withRouter,
+  Redirect,
+  HashRouter,
+} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -9,12 +15,10 @@ import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import styled from "styled-components";
 import { BackgroundLightGreyColor } from "./assets/colors/colors";
-import { connect } from "react-redux";
+import { connect, Provider } from "react-redux";
 import { initializeApp } from "./redux/app_reducer";
 import { compose } from "redux";
 import Preloader from "./components/common/Preloader/Preloader";
-import { HashRouter } from "react-router-dom";
-import { Provider } from "react-redux";
 import store from "./redux/redux-store";
 import { withSuspense } from "./hoc/withSuspense";
 
@@ -40,16 +44,20 @@ const App = ({ initialized, initializeApp }) => {
       <HeaderContainer />
       <Navbar />
       <AppWrapperContainer>
-        <Route
-          path="/profile/:userId?"
-          render={withSuspense(ProfileContainer)}
-        />
-        <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
-        <Route path="/news" render={() => <News />} />
-        <Route path="/music" render={() => <Music />} />
-        <Route path="/users" render={() => <UsersContainer />} />
-        <Route path="/settings" render={() => <Settings />} />
-        <Route path="/login" render={withSuspense(LoginPage)} />
+        <Switch>
+          <Route exact path="/" render={() => <Redirect to={"/profile"} />} />
+          <Route
+            path="/profile/:userId?"
+            render={withSuspense(ProfileContainer)}
+          />
+          <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
+          <Route path="/news" render={() => <News />} />
+          <Route path="/music" render={() => <Music />} />
+          <Route path="/users" render={() => <UsersContainer />} />
+          <Route path="/settings" render={() => <Settings />} />
+          <Route path="/login" render={withSuspense(LoginPage)} />
+          <Route path="*" render={() => <div>404 NOT FOUND</div>} />
+        </Switch>
       </AppWrapperContainer>
     </AppWrapper>
   );

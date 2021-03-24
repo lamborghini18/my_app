@@ -5,9 +5,9 @@ import styled from "styled-components";
 import LoginForm from "./LoginForm";
 import { Redirect } from "react-router-dom";
 
-const Login = ({ login, isAuth }) => {
+const Login = ({ login, isAuth, captchaUrl }) => {
   const addLogin = (values) => {
-    login(values.email, values.password, values.rememberMe);
+    login(values.email, values.password, values.rememberMe, values.captcha);
   };
 
   if (isAuth) {
@@ -16,7 +16,7 @@ const Login = ({ login, isAuth }) => {
   return (
     <StyledLoginBlock>
       <StyledLogin>Login</StyledLogin>
-      <LoginForm onSubmit={addLogin} />
+      <LoginForm onSubmit={addLogin} captchaUrl={captchaUrl} />
     </StyledLoginBlock>
   );
 };

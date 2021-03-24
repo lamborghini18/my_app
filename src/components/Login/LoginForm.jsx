@@ -6,7 +6,7 @@ import { ErrorRedColor } from "../../assets/colors/colors";
 import { Button } from "@material-ui/core";
 import { Textarea } from "../common/FormsControls/FormsControls";
 
-const LoginForm = ({ handleSubmit, error }) => {
+const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
   return (
     <form onSubmit={handleSubmit}>
       <FieldBlock>
@@ -32,6 +32,21 @@ const LoginForm = ({ handleSubmit, error }) => {
         <Field type={"checkbox"} name={"rememberMe"} component={"input"} />
         remember me
       </FieldBlock>
+
+      {captchaUrl && <img src={captchaUrl} alt="" />}
+      {captchaUrl && (
+        <FieldBlock>
+          <Field
+            component={Textarea}
+            label="enter characters"
+            placeholder={"enter characters"}
+            name={"captcha"}
+            validate={[required]}
+            type={"captcha"}
+          />
+        </FieldBlock>
+      )}
+
       {error && <ErrorText>{error}</ErrorText>}
 
       <FieldBlock>
