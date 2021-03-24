@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 import { initializeApp } from "./redux/app_reducer";
 import { compose } from "redux";
 import Preloader from "./components/common/Preloader/Preloader";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/redux-store";
 import { withSuspense } from "./hoc/withSuspense";
@@ -67,11 +67,11 @@ const AppContainer = compose(
 const MainApp = (props) => {
   return (
     <React.StrictMode>
-      <BrowserRouter>
+      <HashRouter>
         <Provider store={store}>
           <AppContainer />
         </Provider>
-      </BrowserRouter>
+      </HashRouter>
     </React.StrictMode>
   );
 };

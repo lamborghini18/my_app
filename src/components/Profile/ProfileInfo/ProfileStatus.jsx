@@ -20,7 +20,9 @@ const ProfileStatus = ({ status, updateStatus }) => {
     <div>
       {!editMode && (
         <div>
-          <div onDoubleClick={activateEditMode}>{status || "no status"}</div>
+          <div onDoubleClick={activateEditMode}>{`Status: ${
+            status || "no status"
+          }`}</div>
         </div>
       )}
       {editMode && (
